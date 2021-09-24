@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from "@angular/forms";
+import {register} from "../register";
 
 
 interface Platform {
@@ -27,9 +28,9 @@ export class RegisterComponent implements OnInit {
 
   constructor(private fb:FormBuilder) {
     this.platforms = [
-      {name: 'Europe de l\'Ouest', code: 'EUW'},
-      {name: 'Amerique du Nord', code: 'NA'},
-      {name: 'Brésil', code: 'CBLOL'},
+      {name: 'EUW', code: 'EUW'},
+      {name: 'NA', code: 'NA'},
+      {name: 'CBLOL', code: 'CBLOL'},
     ];
   }
 
@@ -37,6 +38,7 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit() {
-
+    let result : register=this.registerForm.value;
+    console.log(result);
   }
 }
