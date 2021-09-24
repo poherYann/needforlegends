@@ -5,7 +5,12 @@ import { AppComponent } from './app.component';
 import { RegisterComponent } from './register/register.component';
 
 import { RouterModule, Routes } from '@angular/router';
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import {InputTextModule} from 'primeng/inputtext';
+import {SelectButtonModule} from 'primeng/selectbutton';
+import {ButtonModule} from 'primeng/button';
+
+
 
 const appRoutes: Routes = [
   { path: 'register', component: RegisterComponent },
@@ -21,6 +26,10 @@ const appRoutes: Routes = [
     BrowserModule,
     RouterModule.forRoot(appRoutes),
     FormsModule,
+    ReactiveFormsModule,
+    InputTextModule,
+    SelectButtonModule,
+    ButtonModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

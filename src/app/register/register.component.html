@@ -1,18 +1,29 @@
 <p>register works!</p>
 <form (ngSubmit)="onSubmit()">
-
-  <div class="form-group">
-    <label for="name">Name</label>
-    <input type="text" class="form-control" id="name" required name="name">
-  </div>
-
-  <div class="form-group">
-    <label for="weight">Poids</label>
-    <input type="text" class="form-control" id="weight" required name="weight">
-  </div>
-
-  <div class="form-group">
-    <label for="age">Age</label>
-    <input type="text" class="form-control" id="age" required name="age">
-  </div>
+  <span class="p-float-label">
+    <input id="float-input-name" type="text" pInputText>
+    <label for="float-input-name">Prénom</label>
+  </span>
+  <span class="p-float-label">
+    <input id="float-input-surname" type="text" pInputText>
+    <label for="float-input-surname">Nom</label>
+  </span>
+  <span class="p-float-label">
+    <input id="float-input-summoner_name" type="text" pInputText>
+    <label for="float-input-summoner_name">Nom d'invocateur</label>
+  </span>
+  <span class="p-float-label">
+    <input id="float-input-email" type="text" pInputText>
+    <label for="float-input-email">Email</label>
+  </span>
+  <span class="p-float-label">
+    <input id="float-input-password1" type="text" pInputText>
+    <label for="float-input-password1">Mot de passe</label>
+  </span>
+  <span class="p-float-label">
+    <input id="float-input-password2" type="text" pInputText>
+    <label for="float-input-password2">Confirmer mot de passe</label>
+  </span>
+  <p-selectButton [options]="platforms" optionLabel="name" [multiple]="false"></p-selectButton>
+  <button pButton type="button" class="p-button-raised">Valider</button>
 </form>
