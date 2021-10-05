@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from "@angular/forms";
-import {register} from "../register";
+import { register } from "../register";
+import { RegisterService } from "../service/register.service";
 
 
 interface Platform {
@@ -26,7 +27,7 @@ export class RegisterComponent implements OnInit {
   });
   platforms: Platform[];
 
-  constructor(private fb:FormBuilder) {
+  constructor(private fb:FormBuilder, private registerservice:RegisterService ) {
     this.platforms = [
       {name: 'EUW', code: 'EUW'},
       {name: 'NA', code: 'NA'},
@@ -40,5 +41,6 @@ export class RegisterComponent implements OnInit {
   onSubmit() {
     let result : register=this.registerForm.value;
     console.log(result);
+    this.registerservice.addUser(result);
   }
 }

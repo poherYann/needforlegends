@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+
 import { AppComponent } from './app.component';
 import { RegisterComponent } from './register/register.component';
 
@@ -9,7 +10,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import {InputTextModule} from 'primeng/inputtext';
 import {SelectButtonModule} from 'primeng/selectbutton';
 import {ButtonModule} from 'primeng/button';
-
+import { HttpClientModule } from "@angular/common/http";
 
 
 const appRoutes: Routes = [
@@ -30,6 +31,7 @@ const appRoutes: Routes = [
     InputTextModule,
     SelectButtonModule,
     ButtonModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
