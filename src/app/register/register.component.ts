@@ -49,7 +49,6 @@ export class RegisterComponent implements OnInit {
     this.json.surname=result.surname;
     this.json.platform="EUW";
     this.json.summoner_name=result.summoner_name;
-    console.log(this.json);
 
     this.registerservice.addUser(this.json);
   }
