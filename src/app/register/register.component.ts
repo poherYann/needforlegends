@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from "@angular/forms";
 import { register } from "../register";
 import { RegisterService } from "../service/register.service";
+import {  } from "../service/register.service";
 
 
 interface Platform {
@@ -17,13 +18,13 @@ interface Platform {
 export class RegisterComponent implements OnInit {
 
   registerForm = this.fb.group({
-    name:["", Validators.required],
-    surname:["", Validators.required],
-    summoner_name:["", Validators.required],
-    email:["", Validators.required],
-    password1:["", Validators.required],
-    password2:["", Validators.required],
-    platform:["", Validators.required],
+    name:["", [Validators.required, Validators.minLength(3), Validators.maxLength(15), Validators.pattern('[a-zA-Z ]*\\S+(\\s\\S+)*')]],
+    surname:["", [Validators.required, Validators.minLength(3), Validators.maxLength(15), Validators.pattern('[a-zA-Z ]*\\S+(\\s\\S+)*')]],
+    summoner_name:["", [Validators.required, Validators.minLength(3), Validators.maxLength(25)]],
+    email:["", [Validators.required, Validators.email]],
+    password1:["", [Validators.required, Validators.pattern('^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d@$!%*#?&]{8,}$'), Validators.minLength(5), Validators.maxLength(50)]], // letter num et car spécial
+    password2:["", [Validators.required, Validators.pattern('^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d@$!%*#?&]{8,}$'), Validators.minLength(5), Validators.maxLength(50)]], // letter num et car spécial],
+    platform:["", [Validators.required, ]]
   });
   platforms: Platform[];
   json={"email":"","password":"","name":"","surname":"","platform":"","summoner_name":""};
