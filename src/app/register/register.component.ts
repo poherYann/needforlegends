@@ -26,6 +26,7 @@ export class RegisterComponent implements OnInit {
     platform:["", Validators.required],
   });
   platforms: Platform[];
+  json={"email":"","password":"","name":"","surname":"","platform":"","summoner_name":""};
 
   constructor(private fb:FormBuilder, private registerservice:RegisterService ) {
     this.platforms = [
@@ -39,8 +40,17 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit() {
+
     let result : register=this.registerForm.value;
-    console.log(result);
-    this.registerservice.addUser(result);
+
+    this.json.email=result.email;
+    this.json.password=result.password1;
+    this.json.name=result.name;
+    this.json.surname=result.surname;
+    this.json.platform="EUW";
+    this.json.summoner_name=result.summoner_name;
+    console.log(this.json);
+
+    this.registerservice.addUser(this.json);
   }
 }
