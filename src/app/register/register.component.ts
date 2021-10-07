@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from "@angular/forms";
-import { register } from "../register";
+import { Register } from "../register";
 import { RegisterService } from "../service/register.service";
-import {  } from "../service/register.service";
 
 
 interface Platform {
@@ -42,7 +41,7 @@ export class RegisterComponent implements OnInit {
 
   onSubmit() {
 
-    let result : register=this.registerForm.value;
+    let result : Register=this.registerForm.value;
 
     this.json.email=result.email;
     this.json.password=result.password1;

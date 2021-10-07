@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { Register } from "../register";
+import { Login } from "../login";
 
 
 @Injectable({
   providedIn: 'root'
 })
-export class RegisterService {
+export class LoginService {
 
-  url="http://127.0.0.1:8000/api/register";
+  url="http://127.0.0.1:8000/api/login_check";
 
   httpOption={
     headers: new HttpHeaders()
@@ -16,7 +16,7 @@ export class RegisterService {
 
   constructor(private http: HttpClient) { }
 
-  addUser(json: any):void{
+  loginUser(json: any):void{
     this.http.post<any>(this.url, json, this.httpOption).subscribe();
   }
 }

@@ -1,4 +1,4 @@
-export class register{
+export class Register {
   name:string;
   surname:string;
   summoner_name:string;
