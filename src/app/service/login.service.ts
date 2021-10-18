@@ -8,7 +8,7 @@ import { Login } from "../login";
 })
 export class LoginService {
 
-  url="http://127.0.0.1:8000/api/login_check";
+  url="https://127.0.0.1:8000/api/login_check";
 
   httpOption={
     headers: new HttpHeaders()
@@ -17,6 +17,6 @@ export class LoginService {
   constructor(private http: HttpClient) { }
 
   loginUser(json: any):void{
-    this.http.post<any>(this.url, json, this.httpOption).subscribe();
+    this.http.post<any>(this.url, json, this.httpOption).subscribe(value => {console.log(value.token)});
   }
 }
