@@ -12,6 +12,7 @@ import {SelectButtonModule} from 'primeng/selectbutton';
 import {ButtonModule} from 'primeng/button';
 import { HttpClientModule } from "@angular/common/http";
 import { HomeComponent } from './home/home.component';
+import { SearchComponent } from './search/search.component';
 
 
 
@@ -19,6 +20,8 @@ const appRoutes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
   { path: 'home', component: HomeComponent },
+  { path: 'search', component: SearchComponent },
+
 ];
 
 @NgModule({
@@ -26,7 +29,8 @@ const appRoutes: Routes = [
     AppComponent,
     RegisterComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
