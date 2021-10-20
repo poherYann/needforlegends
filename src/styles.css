@@ -5,3 +5,22 @@
 body {
   background-color: #0B1425;
 }
+
+a, a:visited, a:hover {
+  color: black;
+  text-decoration: none;
+}
+
+a#signup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #cdc5c2;
+  width: 100%;
+  border-radius: 5px;
+  border: black 2px dashed;
+}
+
+a#signup img {
+  margin-top: 1em;
+}
