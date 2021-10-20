@@ -1,3 +1,7 @@
 @import "../node_modules/primeng/resources/themes/saga-blue/theme.css";
 @import "../node_modules/primeng/resources/primeng.min.css";
 @import "../node_modules/primeicons/primeicons.css";
+
+body {
+  background-color: #0B1425;
+}
