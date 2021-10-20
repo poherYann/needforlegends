@@ -1,1 +1,32 @@
-<p>footer works!</p>
+<!--<p-tabMenu [model]="items"></p-tabMenu>-->
+<ul ngbNav #nav="ngbNav" class="fixed-bottom nav-tabs"> <!--[(activeId)]="active"-->
+  <li [ngbNavItem]="1">
+    <a class="navbar-link" ngbNavLink>
+      <i class="bi bi-search"></i>
+      <br>
+      Search
+    </a>
+  </li>
+  <li [ngbNavItem]="2">
+    <a class="navbar-link" ngbNavLink>
+      <i class="bi bi-hourglass"></i>
+      <br>
+      Games</a>
+  </li>
+  <li [ngbNavItem]="3">
+    <a class="navbar-link" ngbNavLink>
+      <i class="bi bi-lightning-charge"></i>
+      <br>
+      N4S</a>
+  </li>
+  <li [ngbNavItem]="4">
+    <a class="navbar-link" ngbNavLink>
+      <i class="bi bi-heart"></i>
+      <br>
+      Favorites</a>
+  </li>
+</ul>
+
+<div [ngbNavOutlet]="nav" class="mt-2"></div>
+
+<!--<pre>Active: {{ active }}</pre>-->

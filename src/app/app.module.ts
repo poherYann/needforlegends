@@ -15,6 +15,11 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { GamesComponent } from './games/games.component';
 
+import { TabMenuModule } from 'primeng/tabmenu';
+
+import { MenuModule} from "primeng/menu";
+
+import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 
 
 const appRoutes: Routes = [
@@ -44,6 +49,10 @@ const appRoutes: Routes = [
     SelectButtonModule,
     ButtonModule,
     HttpClientModule,
+    TabMenuModule,
+    MenuModule,
+    NgbModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]
