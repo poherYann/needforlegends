@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { Login } from "../login";
 import {GetuserService} from "./getuser.service";
+
 
 
 @Injectable({

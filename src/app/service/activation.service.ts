@@ -6,6 +6,7 @@ import {ToastrService} from "ngx-toastr";
 @Injectable({
   providedIn: 'root'
 })
+
 export class ActivationService {
 
   url="http://localhost:8000/activation_token";
