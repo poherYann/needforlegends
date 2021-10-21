@@ -1,32 +1,33 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppComponent } from './app.component';
-
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import {InputTextModule} from 'primeng/inputtext';
-import {SelectButtonModule} from 'primeng/selectbutton';
-import {ButtonModule} from 'primeng/button';
+import { InputTextModule } from 'primeng/inputtext';
+import { SelectButtonModule } from 'primeng/selectbutton';
+import { ButtonModule } from 'primeng/button';
 import { HttpClientModule } from "@angular/common/http";
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { GamesComponent } from './games/games.component';
-
 import { TabMenuModule } from 'primeng/tabmenu';
-
 import { MenuModule} from "primeng/menu";
-
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
-import {HomeComponent} from "./home/home.component";
-
+import { HomeComponent } from "./home/home.component";
+import { RegisterComponent } from "./register/register.component";
+import { LoginComponent } from "./login/login.component";
+import { ActivationComponent } from "./activation/activation.component";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { ToastrModule } from 'ngx-toastr';
 
 const appRoutes: Routes = [
   { path: 'header', component: HeaderComponent },
   { path: 'footer', component: FooterComponent },
   { path: 'games', component: GamesComponent },
   { path: 'home', component: HomeComponent },
-
+  { path: 'register', component: RegisterComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'activation/:token', component: ActivationComponent },
 ];
 
 @NgModule({
@@ -35,10 +36,14 @@ const appRoutes: Routes = [
     HeaderComponent,
     FooterComponent,
     GamesComponent,
+    ActivationComponent,
+    RegisterComponent,
+    LoginComponent,
     HomeComponent
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     RouterModule.forRoot(appRoutes),
     FormsModule,
     ReactiveFormsModule,
@@ -48,6 +53,7 @@ const appRoutes: Routes = [
     HttpClientModule,
     TabMenuModule,
     MenuModule,
+    ToastrModule.forRoot(),
     NgbModule,
 
   ],
