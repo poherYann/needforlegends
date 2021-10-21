@@ -11,16 +11,23 @@ import {InputTextModule} from 'primeng/inputtext';
 import {SelectButtonModule} from 'primeng/selectbutton';
 import {ButtonModule} from 'primeng/button';
 import { HttpClientModule } from "@angular/common/http";
-import { HomeComponent } from './home/home.component';
-import { SearchComponent } from './search/search.component';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
+import { GamesComponent } from './games/games.component';
 
+import { TabMenuModule } from 'primeng/tabmenu';
+
+import { MenuModule} from "primeng/menu";
+
+import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 
 
 const appRoutes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'home', component: HomeComponent },
-  { path: 'search', component: SearchComponent },
+  { path: 'header', component: HeaderComponent },
+  { path: 'footer', component: FooterComponent },
+  { path: 'games', component: GamesComponent },
 
 ];
 
@@ -29,8 +36,9 @@ const appRoutes: Routes = [
     AppComponent,
     RegisterComponent,
     LoginComponent,
-    HomeComponent,
-    SearchComponent
+    HeaderComponent,
+    FooterComponent,
+    GamesComponent
   ],
   imports: [
     BrowserModule,
@@ -41,6 +49,10 @@ const appRoutes: Routes = [
     SelectButtonModule,
     ButtonModule,
     HttpClientModule,
+    TabMenuModule,
+    MenuModule,
+    NgbModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]
