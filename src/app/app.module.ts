@@ -29,6 +29,14 @@ const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'activation/:token', component: ActivationComponent },
 ];
+import { MatchComponent } from './match/match.component';
+import { RouterModule, Routes } from "@angular/router";
+import { HttpClientModule } from '@angular/common/http';
+import { AccordionModule } from "primeng/accordion";
+
+const ROUTES: Routes=[
+  {path:'match/:summoner_name',component: MatchComponent},
+];
 
 @NgModule({
   declarations: [
@@ -40,6 +48,8 @@ const appRoutes: Routes = [
     RegisterComponent,
     LoginComponent,
     HomeComponent
+    AppComponent,
+    MatchComponent
   ],
   imports: [
     BrowserModule,
@@ -56,6 +66,12 @@ const appRoutes: Routes = [
     ToastrModule.forRoot(),
     NgbModule,
 
+    BrowserAnimationsModule,
+    BrowserModule,
+    RouterModule,
+    RouterModule.forRoot(ROUTES),
+    HttpClientModule,
+    AccordionModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
