@@ -14,14 +14,6 @@ export class MatchComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,private matchService:MatchService) {
 
-    localStorage.setItem('token', 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.' +
-      'eyJpYXQiOjE2MzQ2NTQwMDAsImV4cCI6MTYzNDY1NzYwMCwicm9sZXMiOlsiUk9MRV9VU0VSIl0sInVzZXJuYW1l' +
-      'IjoianVsaWVuLm1hbGxldC5wcm9AZ21haWwuY29tIn0.XWN2xnlauzy0cLPVNLbKkF1TJpKj2DUUnVAVi_4fskRQGq' +
-      'Law-ykACkhTkqbmy8iR8Ul1IuuOB3fcZdRrgo8RhaqXOHyHkcym8mG3W-FWVSIXn_c6aY9nlpn--GPjRkcfsw8Os8' +
-      'Egsn7Lsfu4wkMshXi8TDP1AdugGg-ix_MGhCpeARH6u2hpcAjWZvKM4NY_3fkSYkhvoXugkJm9L80HmJ3E9Tl7cKMj3' +
-      'ET2GZaIo68Jomz5BxvGvnnsaccdVcmLS2hpAbwDC244iV3jVsGXLK28dqPdtRmpwVdYVWLA7fgRU_h_3sJ9nlXg7PLW2V' +
-      'PX5XOHYZ6TcTtcnheuSnycQ');
-
   }
 
   ngOnInit(): void {
@@ -31,11 +23,10 @@ export class MatchComponent implements OnInit {
     if (str != null && token!=null) {
       let matchValue= this.matchService.getMatch(str);
       // @ts-ignore
-      matchValue.toPromise().then(value =>{this.arrayMatches=value; let x =this.arrayMatches});
+      matchValue.toPromise().then(value =>{console.log(value)});
 
     }
 
-    console.log(x);
   }
 
 }

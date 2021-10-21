@@ -19,6 +19,8 @@ import { LoginComponent } from "./login/login.component";
 import { ActivationComponent } from "./activation/activation.component";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { ToastrModule } from 'ngx-toastr';
+import {MatchComponent} from "./match/match.component";
+import {AccordionModule} from "primeng/accordion";
 
 const appRoutes: Routes = [
   { path: 'header', component: HeaderComponent },
@@ -28,15 +30,10 @@ const appRoutes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
   { path: 'activation/:token', component: ActivationComponent },
-];
-import { MatchComponent } from './match/match.component';
-import { RouterModule, Routes } from "@angular/router";
-import { HttpClientModule } from '@angular/common/http';
-import { AccordionModule } from "primeng/accordion";
+  { path:'match/:summoner_name',component: MatchComponent },
 
-const ROUTES: Routes=[
-  {path:'match/:summoner_name',component: MatchComponent},
 ];
+
 
 @NgModule({
   declarations: [
@@ -47,8 +44,7 @@ const ROUTES: Routes=[
     ActivationComponent,
     RegisterComponent,
     LoginComponent,
-    HomeComponent
-    AppComponent,
+    HomeComponent,
     MatchComponent
   ],
   imports: [
@@ -65,12 +61,6 @@ const ROUTES: Routes=[
     MenuModule,
     ToastrModule.forRoot(),
     NgbModule,
-
-    BrowserAnimationsModule,
-    BrowserModule,
-    RouterModule,
-    RouterModule.forRoot(ROUTES),
-    HttpClientModule,
     AccordionModule,
   ],
   providers: [],

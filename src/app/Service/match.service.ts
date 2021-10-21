@@ -22,4 +22,9 @@ export class MatchService {
    return this.http.post(this.url+'/api/get/match/'+summoner_name,'',this.httpOption);
   }
 
+  setMatch(summoner_name:string){
+
+     this.http.post(this.url+'/api/match/'+summoner_name,'',this.httpOption);
+  }
+
 }
