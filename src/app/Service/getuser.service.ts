@@ -25,7 +25,7 @@ export class GetuserService {
 
       if(value.request.code === 200){
           this.toaster.success(value.detail);
-         this.router.navigate(['/register']);
+         this.router.navigate(['/home']);
       }
       }, err=>{
 
