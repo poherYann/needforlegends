@@ -2,8 +2,6 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import { RegisterComponent } from './register/register.component';
-import { LoginComponent } from './login/login.component';
 
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
@@ -20,25 +18,24 @@ import { TabMenuModule } from 'primeng/tabmenu';
 import { MenuModule} from "primeng/menu";
 
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
+import {HomeComponent} from "./home/home.component";
 
 
 const appRoutes: Routes = [
-  { path: 'register', component: RegisterComponent },
-  { path: 'login', component: LoginComponent },
   { path: 'header', component: HeaderComponent },
   { path: 'footer', component: FooterComponent },
   { path: 'games', component: GamesComponent },
+  { path: 'home', component: HomeComponent },
 
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
-    RegisterComponent,
-    LoginComponent,
     HeaderComponent,
     FooterComponent,
-    GamesComponent
+    GamesComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

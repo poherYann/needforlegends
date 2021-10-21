@@ -5,8 +5,9 @@
 @import "~bootstrap-icons/font/bootstrap-icons.css";
 
 
+
 body {
-  background-color: #0B1425;
+  background-color: #0B1425!important;
 }
 
 a, a:visited, a:hover {
