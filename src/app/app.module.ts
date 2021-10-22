@@ -22,6 +22,7 @@ import { ToastrModule } from 'ngx-toastr';
 import {MatchComponent} from "./match/match.component";
 import {AccordionModule} from "primeng/accordion";
 import {SearchComponent} from "./search/search.component";
+import { FavoritesComponent } from './favorites/favorites.component';
 
 const appRoutes: Routes = [
   { path: 'header', component: HeaderComponent },
@@ -33,6 +34,7 @@ const appRoutes: Routes = [
   { path: 'activation/:token', component: ActivationComponent },
   { path:'match/:summoner_name',component: MatchComponent },
   { path:'search',component: SearchComponent },
+  { path:'favorites',component: FavoritesComponent },
 
 ];
 
@@ -48,7 +50,8 @@ const appRoutes: Routes = [
     LoginComponent,
     HomeComponent,
     MatchComponent,
-    SearchComponent
+    SearchComponent,
+    FavoritesComponent
   ],
   imports: [
     BrowserModule,

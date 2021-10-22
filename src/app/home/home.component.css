@@ -16,8 +16,7 @@ div.match {
   margin-bottom: 1rem;
   border-radius: 5px;
   height: 6rem;
-  border: solid black 2px;
-  width: 95%;
+  box-shadow: -3px 3px 6px 0px rgba(255,255,255,0.39);  width: 95%;
   display: flex;
   align-items: center;
 }
@@ -63,11 +62,11 @@ div.text div {
 }
 
 .vertical-line.red {
-  border-left: 3px solid red;
+  border-left: 4px solid red;
 }
 
 .vertical-line.green {
-  border-left: 3px solid limegreen;
+  border-left: 4px solid limegreen;
 }
 
 div.spells, div.runes{

@@ -1,4 +1,3 @@
-<p>register works!</p>
 <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
   <span class="p-float-label">
     <input id="float-input-name" type="text" formControlName="name" pInputText>
@@ -10,7 +9,7 @@
   </span>
   <span class="p-float-label">
     <input id="float-input-summoner_name" type="text" formControlName="summoner_name" pInputText>
-    <label for="float-input-summoner_name">Nom d'invocateur</label>
+    <label for="float-input-summoner_name" class="test">Nom d'invocateur</label>
   </span>
   <span class="p-float-label">
     <input id="float-input-email" type="email" formControlName="email" pInputText>
@@ -18,7 +17,7 @@
   </span>
   <span class="p-float-label">
     <input id="float-input-password1" type="password" formControlName="password1" pInputText>
-    <label for="float-input-password1">Mot de passe</label>
+    <label for="float-input-password1" class="test">Mot de passe</label>
   </span>
   <span class="p-float-label">
     <input id="float-input-password2" type="password" formControlName="password2" pInputText>
