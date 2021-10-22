@@ -1,0 +1,39 @@
+h1 {
+  margin-bottom: 1.5rem;
+  color: #D0A85C;
+}
+
+div.user {
+  background-color: white;
+  box-shadow: -3px 3px 6px 0px rgba(255,255,255,0.39);
+  margin-bottom: 1rem;
+  border-radius: 5px;
+  height: 6rem;
+  width: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 0.5rem;
+}
+
+div.userleft {
+  display: flex;
+  align-items: center;
+}
+
+img.profilpic {
+  border: 2px solid #d0a85c;
+  width: 5rem;
+  border-radius: 100%;
+}
+
+p.username {
+  margin-left: 1rem;
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+.bi::before {
+  font-size: 2rem;
+  color: #E82424;
+}
