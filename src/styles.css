@@ -3,6 +3,7 @@
 @import "../node_modules/primeng/resources/primeng.min.css";
 @import "../node_modules/primeicons/primeicons.css";
 @import "app/footer/footer.component.css";
+@import "app/header/header.component.css";
 @import "~bootstrap-icons/font/bootstrap-icons.css";
 @import "app/match/match.component.css";
 
