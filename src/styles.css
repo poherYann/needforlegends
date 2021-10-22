@@ -28,6 +28,13 @@ a#signup {
 a#signup img {
   margin-top: 1em;
 }
+
+div.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2.5rem;
+}
 /* You can add global styles to this file, and also import other style files */
 @import "../node_modules/primeng/resources/themes/saga-blue/theme.css";
 @import "../node_modules/primeng/resources/primeng.min.css";
