@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { Login } from "../login";
 import {GetuserService} from "./getuser.service";
+import {MatchService} from "./match.service";
 
 
 @Injectable({
@@ -15,7 +15,7 @@ export class LoginService {
     headers: new HttpHeaders()
   }
 
-  constructor(private http: HttpClient,private userService:GetuserService) { }
+  constructor(private http: HttpClient,private userService:GetuserService,private matchService:MatchService) { }
 
   loginUser(json: any):void{
 
@@ -23,6 +23,8 @@ export class LoginService {
       localStorage.setItem("token",value.token);
       localStorage.setItem('refresh_token',value.refresh_token);
       this.userService.getUser(json.username,value.token);
+      this.matchService.setMatch(json.username,value.token);
+
     });
   }
 }

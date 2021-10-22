@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
-import {MatchService} from "../Service/match.service";
-import { match } from "../match";
+import {MatchService} from "../service/match.service";
 
 @Component({
   selector: 'app-match',
@@ -21,7 +20,7 @@ export class MatchComponent implements OnInit {
     let str =this.route.snapshot.paramMap.get('summoner_name');
     let token = localStorage.getItem('token');
     if (str != null && token!=null) {
-      let matchValue= this.matchService.getMatch(str);
+      let matchValue= this.matchService.getMatch(str,token);
       // @ts-ignore
       matchValue.toPromise().then(value =>{console.log(value)});
 

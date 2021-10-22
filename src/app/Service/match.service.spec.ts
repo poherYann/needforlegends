@@ -2,7 +2,6 @@ import { TestBed } from '@angular/core/testing';
 
 import { MatchService } from './match.service';
 
-
 describe('MatchService', () => {
   let service: MatchService;
 

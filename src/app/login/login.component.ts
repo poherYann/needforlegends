@@ -18,8 +18,11 @@ export class LoginComponent implements OnInit {
   });
   json={"username":"", "password":""};
 
-  constructor(private fb:FormBuilder, private loginservice:LoginService,private route: ActivatedRoute,private toaster:ToastrService,private activatedRoute: ActivatedRoute) {
+  token :string |null;
 
+  constructor(private fb:FormBuilder, private loginservice:LoginService,private route: ActivatedRoute
+              ,private toaster:ToastrService,private activatedRoute: ActivatedRoute) {
+    this.token=localStorage.getItem("item") ;
   }
 
   ngOnInit(): void {
@@ -42,6 +45,7 @@ export class LoginComponent implements OnInit {
     this.json.password=result.password;
 
     this.loginservice.loginUser(this.json);
+
   }
 
 }
