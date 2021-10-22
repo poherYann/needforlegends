@@ -21,6 +21,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { ToastrModule } from 'ngx-toastr';
 import {MatchComponent} from "./match/match.component";
 import {AccordionModule} from "primeng/accordion";
+import {SearchComponent} from "./search/search.component";
 
 const appRoutes: Routes = [
   { path: 'header', component: HeaderComponent },
@@ -31,6 +32,7 @@ const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'activation/:token', component: ActivationComponent },
   { path:'match/:summoner_name',component: MatchComponent },
+  { path:'search',component: SearchComponent },
 
 ];
 
@@ -45,7 +47,8 @@ const appRoutes: Routes = [
     RegisterComponent,
     LoginComponent,
     HomeComponent,
-    MatchComponent
+    MatchComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
