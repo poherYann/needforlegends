@@ -1,0 +1,51 @@
+h1 {
+  color: #cdc5c2;
+}
+
+div.register {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+p, a {
+  color: #cdc5c2;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+span.p-float-label, p-selectButton {
+  margin-bottom: 1.6rem;
+}
+
+span.p-float-label input {
+  width: 15rem;
+}
+
+.p-inputtext:enabled:focus {
+  outline: 0 none;
+  outline-offset: 0;
+  box-shadow: 0 0 0 0.1rem #d0a85c;
+  border-color: #d0a85c;
+}
+
+.p-float-label input:focus ~ label {
+  color: #d0a85c;
+}
+
+button.p-button {
+  background-color: #d0a85c;
+  border: 1px solid #d0a85c;
+  color: #0b1425;
+  font-weight: bold;
+}
+
+.p-selectbutton .p-button.p-highlight, .p-selectbutton .p-button.p-highlight:hover, .p-button:enabled:hover {
+  background: #d0a85c!important;
+  border-color: #d0a85c;
+  color: #0b1425!important;
+}

@@ -6,49 +6,6 @@
 @import "~bootstrap-icons/font/bootstrap-icons.css";
 @import "app/match/match.component.css";
 
-/*REGISTER STYLE*/
-body {
-  background-color: #0B1425;
-}
-
-h1 {
-  color: #cdc5c2;
-}
-
-div.register {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-p, a {
-  color: #cdc5c2;
-}
-
-form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-span.p-float-label, p-selectButton {
-  margin-bottom: 1.6rem;
-}
-
-button.p-button {
-  background-color: #d0a85c;
-  border: 1px solid #d0a85c;
-  color: #0b1425;
-  font-weight: bold;
-}
-
-.p-selectbutton .p-button.p-highlight, .p-selectbutton .p-button.p-highlight:hover {
-  background: #d0a85c;
-  border-color: #d0a85c;
-  color: #0b1425;
-}
-/*FIN REGISTER STYLE*/
-
 body {
   background-color: #0B1425!important;
 }
