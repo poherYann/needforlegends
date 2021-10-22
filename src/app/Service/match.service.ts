@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {Router} from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,7 @@ export class MatchService {
 
   url="http://127.0.0.1:8000";
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,private router:Router) { }
 
   getMatch(summoner_name:string,token:string){
     let httpOption={
@@ -29,6 +30,8 @@ export class MatchService {
       })
     }
     this.http.post(this.url+'/api/match',{email:email},httpOption).subscribe(value=>console.log(value));
+    this.router.navigate(['/home']);
+
   }
 
 }

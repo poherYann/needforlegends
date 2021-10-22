@@ -12,7 +12,10 @@ export class LoginService {
   url="http://127.0.0.1:8000/api/login_check";
 
   httpOption={
-    headers: new HttpHeaders()
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+
+    })
   }
 
   constructor(private http: HttpClient,private userService:GetuserService,private matchService:MatchService) { }
