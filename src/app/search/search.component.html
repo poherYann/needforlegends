@@ -1,10 +1,11 @@
 <div class="content">
-  <img src="https://opgg-static.akamaized.net/images/profile_icons/profileIcon29.jpg?image=q_auto:best&v=1518361200" alt="" id="profilpic">
   <div class="search">
-    <input type="search" name="searchbar" placeholder="Search a summoner">
+    <form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
+    <input type="search" name="searchbar" formControlName="search" placeholder="Search a summoner">
     <button type="submit">
       <img id="searchicon" src="assets/img/search.png" alt="">
     </button>
+    </form>
   </div>
   <a [routerLink]="['/register']" id="signup">
     <img src="assets/img/plus.png" alt="" width="40px">

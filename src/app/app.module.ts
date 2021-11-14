@@ -22,6 +22,11 @@ import { ToastrModule } from 'ngx-toastr';
 import {MatchComponent} from "./match/match.component";
 import {AccordionModule} from "primeng/accordion";
 import {SearchComponent} from "./search/search.component";
+import {LogoutComponent} from "./logout/logout.component";
+import {AlgorithmeComponent} from "./algorithme/algorithme.component";
+import {GetChampionResolver, GetItemResolver, GetMatchResolver, GetSummonerResolver} from "./Service/resolver.service";
+import {timestampDifferenceComponent} from "./Pipe/timestampDifferenceComponent";
+import {timestampComponent} from "./Pipe/timestampComponent";
 
 const appRoutes: Routes = [
   { path: 'header', component: HeaderComponent },
