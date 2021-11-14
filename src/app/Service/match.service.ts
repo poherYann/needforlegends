@@ -12,17 +12,17 @@ export class MatchService {
 
   constructor(private http: HttpClient,private router:Router) { }
 
-  getMatch(summoner_name:string,token:string){
+  getMatch(summoner_name:string | null,token:string | null){
     let httpOption={
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
         'Authorization': 'Bearer '+token
       })
     }
-    return this.http.post(this.url+'/api/get/match/'+summoner_name,'',httpOption);
+    return this.http.post(this.url+'/get/match/'+summoner_name,'',httpOption);
   }
 
-  setMatch(email:string,token:string){
+  setMatch(email:string,token:string | null){
     let httpOption={
       headers: new HttpHeaders({
         'Content-Type': 'application/json',

@@ -21,12 +21,11 @@ export class LoginService {
   constructor(private http: HttpClient,private userService:GetuserService,private matchService:MatchService) { }
 
   loginUser(json: any):void{
-
     this.http.post<any>(this.url, json, this.httpOption).subscribe(value => {
       localStorage.setItem("token",value.token);
       localStorage.setItem('refresh_token',value.refresh_token);
-      this.userService.getUser(json.username,value.token);
-      this.matchService.setMatch(json.username,value.token);
+      this.userService.getUser(json.username,localStorage.getItem('token'));
+      this.matchService.setMatch(json.username,localStorage.getItem('token'));
 
     });
   }

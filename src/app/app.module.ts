@@ -23,6 +23,10 @@ import {MatchComponent} from "./match/match.component";
 import {AccordionModule} from "primeng/accordion";
 import {SearchComponent} from "./search/search.component";
 import { AlgorithmeComponent } from './algorithme/algorithme.component';
+import { LogoutComponent } from './logout/logout.component';
+import {GetChampionResolver, GetItemResolver, GetMatchResolver, GetSummonerResolver} from "./Service/resolver.service";
+import {timestampComponent} from "./Pipe/timestampComponent";
+import {timestampDifferenceComponent} from "./Pipe/timestampDifferenceComponent";
 
 const appRoutes: Routes = [
   { path: 'header', component: HeaderComponent },
@@ -32,9 +36,13 @@ const appRoutes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
   { path: 'activation/:token', component: ActivationComponent },
-  { path:'match/:summoner_name',component: MatchComponent },
+  { path:'match/:summoner_name',component: MatchComponent,resolve:{
+      data: GetMatchResolver,GetChampionResolver,GetItemResolver,GetSummonerResolver,
+    },
+  },
   { path:'search',component: SearchComponent },
   { path:'algo',component: AlgorithmeComponent },
+  { path:'logout',component: LogoutComponent },
 
 ];
 
@@ -42,6 +50,8 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
+    timestampDifferenceComponent,
+    timestampComponent,
     HeaderComponent,
     FooterComponent,
     GamesComponent,
@@ -51,7 +61,8 @@ const appRoutes: Routes = [
     HomeComponent,
     MatchComponent,
     SearchComponent,
-    AlgorithmeComponent
+    AlgorithmeComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,
