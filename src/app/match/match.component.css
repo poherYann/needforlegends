@@ -83,3 +83,9 @@ div.spells img, div.runes img{
 div.imgs {
   margin: 0.3rem 0;
 }
+.lose{
+  background: lightcoral !important;
+}
+.win{
+  background: lightblue !important;
+}
