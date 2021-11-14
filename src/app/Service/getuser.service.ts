@@ -11,21 +11,20 @@ export class GetuserService {
   url="http://127.0.0.1:8000/api/get_user";
 
 
-
   constructor(private http: HttpClient,private router:Router,private toaster:ToastrService) { }
 
-  getUser(email: string,token: string):void{
+  getUser(email: string,token: string | null):void{
 
-    let httpOption={
+   let httpOption={
       headers: new HttpHeaders({
         'Authorization': 'Bearer '+token
       })
     };
-    this.http.post<any>(this.url+'/'+email, '', httpOption).subscribe(value => {
+   console.log(token);
+    this.http.post<any>(this.url,{email:email}, httpOption).subscribe(value => {
 
       if(value.request.code === 200){
           this.toaster.success(value.detail);
-         this.router.navigate(['/home']);
       }
       }, err=>{
 

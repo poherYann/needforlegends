@@ -1,5 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
+// @ts-ignore
 import { LoginService } from './login.service';
 
 describe('LoginService', () => {

@@ -1,14 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-// @ts-ignore
-import { MatchService } from './match.service';
+import { LogoutService } from './logout.service';
 
-describe('MatchService', () => {
-  let service: MatchService;
+describe('LogoutService', () => {
+  let service: LogoutService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(MatchService);
+    service = TestBed.inject(LogoutService);
   });
 
   it('should be created', () => {

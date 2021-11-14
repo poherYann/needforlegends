@@ -16,6 +16,7 @@ export class ActivationComponent implements OnInit {
    const token= this.activatedRoute.snapshot.params['token'];
 
    if(token!=null){
+
      this.activationService.getTokenActivation(token);
    }
   }

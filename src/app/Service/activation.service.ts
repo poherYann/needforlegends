@@ -16,12 +16,13 @@ export class ActivationService {
   constructor(private http: HttpClient,private router:Router,private toaster:ToastrService) { }
 
 
+
+
   getTokenActivation(token :string):void{
 
     this.http.post<any>(this.url,{ token : token }, this.httpOption).subscribe(value => {
 
       if(value === "Token valide"){
-
         this.toaster.success(value);
         this.router.navigate(['/login']);
       }

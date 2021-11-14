@@ -1,0 +1,91 @@
+div.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+img#profilpic {
+  border: 2px solid #d0a85c;
+  width: 5rem;
+  margin-bottom: 3rem;
+  border-radius: 100%;
+}
+
+div.match {
+  background-color: white;
+  margin-bottom: 1rem;
+  border-radius: 5px;
+  height: 6rem;
+  border: solid black 2px;
+  width: 95%;
+  display: flex;
+  align-items: center;
+}
+
+div.matchleft {
+  display: flex;
+  align-items: center;
+  width: 35%;
+}
+
+div.matchright {
+  width: 65%;
+  margin-right: 5px;
+  font-size: small;
+}
+
+div.text {
+  display: flex;
+  justify-content: space-between;
+  text-align: right;
+}
+
+div.text p {
+  font-weight: bold;
+  margin: 0;
+  padding: 0;
+}
+
+span.death {
+  color: red;
+}
+
+div.text div {
+  display: flex;
+  flex-direction: column;
+}
+
+.vertical-line{
+  display: inline-block;
+  height: 80%;
+  margin: 0 10px;
+  border-radius: 5px;
+}
+
+.vertical-line.red {
+  border-left: 3px solid red;
+}
+
+.vertical-line.green {
+  border-left: 3px solid limegreen;
+}
+
+div.spells, div.runes{
+  display: flex;
+  flex-direction: column;
+  margin-left: 0.5rem;
+}
+
+div.spells img, div.runes img{
+  margin: 2.5% 0;
+}
+
+div.imgs {
+  margin: 0.3rem 0;
+}
+.lose{
+  background: lightcoral !important;
+}
+.win{
+  background: lightblue !important;
+}

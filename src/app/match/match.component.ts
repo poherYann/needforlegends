@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
-import {MatchService} from "../Service/match.service";
-import { match } from "../match";
+import {MatchService} from "../service/match.service";
+import {GetSummonerResolver} from "../Service/resolver.service";
 
 @Component({
   selector: 'app-match',
@@ -10,7 +10,10 @@ import { match } from "../match";
 })
 export class MatchComponent implements OnInit {
 
-  private arrayMatches: any;
+  public arrayMatches: any;
+  public arrayChampions:any;
+  public arrayItems:any;
+  public arraySummoners:any;
 
   constructor(private route: ActivatedRoute,private matchService:MatchService) {
 
@@ -18,15 +21,21 @@ export class MatchComponent implements OnInit {
 
   ngOnInit(): void {
 
-    let str =this.route.snapshot.paramMap.get('summoner_name');
-    let token = localStorage.getItem('token');
-    if (str != null && token!=null) {
-      let matchValue= this.matchService.getMatch(str);
-      // @ts-ignore
-      matchValue.toPromise().then(value =>{console.log(value)});
+    this.route.data.subscribe(value =>{
+        this.arrayChampions=value.GetChampionResolver;
+        this.arrayItems=value.GetItemResolver;
+        this.arrayMatches=value.data;
+        this.arraySummoners=value.GetSummonerResolver;
+        console.log( this.arrayItems);
+        console.log( this.arrayMatches);
+        console.log( this.arrayChampions);
+        console.log( this.arraySummoners);
 
-    }
+      },
+      (error)=>{
+        console.log(error);
 
+      });
   }
 
 }
