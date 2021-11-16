@@ -1,3 +1,5 @@
+<div class="content">
+
 <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
   <span class="p-float-label">
     <input id="float-input-name" type="text" formControlName="name" pInputText >
@@ -26,3 +28,4 @@
   <p-selectButton formControlName="platform" [options]="platforms" optionLabel="name" [multiple]="false"></p-selectButton>
   <button pButton type="submit" class="p-button-raised">Valider</button>
 </form>
+</div>
