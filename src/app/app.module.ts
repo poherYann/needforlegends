@@ -27,12 +27,14 @@ import {AlgorithmeComponent} from "./algorithme/algorithme.component";
 import {GetChampionResolver, GetItemResolver, GetMatchResolver, GetSummonerResolver} from "./Service/resolver.service";
 import {timestampDifferenceComponent} from "./Pipe/timestampDifferenceComponent";
 import {timestampComponent} from "./Pipe/timestampComponent";
+import { Need4legendsComponent } from './need4legends/need4legends.component';
 
 const appRoutes: Routes = [
   { path: 'header', component: HeaderComponent },
   { path: 'footer', component: FooterComponent },
   { path: 'games', component: GamesComponent },
   { path: 'home', component: HomeComponent },
+  { path: 'need4legends', component: Need4legendsComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
   { path: 'activation/:token', component: ActivationComponent },
@@ -62,7 +64,8 @@ const appRoutes: Routes = [
     MatchComponent,
     SearchComponent,
     AlgorithmeComponent,
-    LogoutComponent
+    LogoutComponent,
+    Need4legendsComponent
   ],
   imports: [
     BrowserModule,

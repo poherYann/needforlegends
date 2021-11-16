@@ -7,14 +7,14 @@
 }
 .h1-title {
   color: #D0A85C;
-  font-size: 1.5em;
+  font-size: 1.3em;
   margin: 8px 0 0 0;
 }
 .header-container {
   background-color: #0B1425;
 }
 .region-img {
-  width: 10%;
+  width: 70%;
 }
 .dropdown-menu {
   background-color: #0B1425;
@@ -24,7 +24,7 @@
   color: #D0A85C;
 }
 .dropdown-link:hover {
-   background-color: #D0A85C;
+  background-color: #D0A85C;
   color: #0B1425;
  }
 

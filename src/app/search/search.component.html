@@ -1,14 +1,15 @@
 <div class="content">
   <div class="search">
-    <form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
-    <input type="search" name="searchbar" formControlName="search" placeholder="Search a summoner">
-    <button type="submit">
-      <img id="searchicon" src="assets/img/search.png" alt="">
-    </button>
+    <form class="form-horizontal" [formGroup]="searchForm" (ngSubmit)="onSubmit()">
+      <div class="input-group input-group-bg">
+        <input type="search" name="searchbar" formControlName="search" placeholder="Search a summoner">
+        <button class="btn" type="submit"><i class="bi bi-check-lg icon-validator"></i></button>
+      </div>
     </form>
   </div>
-  <a [routerLink]="['/register']" id="signup">
-    <img src="assets/img/plus.png" alt="" width="40px">
-    <p>Inscris-toi pour encore plus de fonctionnalités.</p>
-  </a>
+  <div id="signup">
+    <p class="sign-up">for more features</p>
+    <a class="sign-up-button" href="#" routerLink="/register">sign-up</a>
+    <p class="sign-in-text">Already have an account? <a href="#" class="sign-in" routerLink="/login">Sign in →</a></p>
+  </div>
 </div>
