@@ -8,7 +8,7 @@
 @import "app/match/match.component.css";
 
 body {
-  background-color: #0B1425!important;
+ background-color: #0B1425!important;
 }
 
 a, a:visited, a:hover {
@@ -16,14 +16,28 @@ a, a:visited, a:hover {
   text-decoration: none;
 }
 
-a#signup {
+div#signup {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #cdc5c2;
-  width: 100%;
-  border-radius: 5px;
-  border: black 2px dashed;
+  width: 95%;
+  height: 250px;
+  border: 2px solid;
+  --angle: 0deg;
+  border-image: linear-gradient(var(--angle), black 10%, #D0A85C) 10;
+  animation: 10s rotate linear infinite;
+  background-image: url("assets/img/bg-inscristoi-2.jpg");
+  background-size: cover;
+}
+@keyframes rotate {
+  to {
+    --angle: 360deg;
+  }
+}
+@property --angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
 }
 
 a#signup img {

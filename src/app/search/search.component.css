@@ -3,51 +3,89 @@ div.content {
   flex-direction: column;
   align-items: center;
 }
-
 img#profilpic {
   border: 2px solid #d0a85c;
   width: 5rem;
   margin-bottom: 3rem;
   border-radius: 100%;
 }
-
-form {
-  height: 25px;
+div.search {
+  height: 30px;
   display: flex;
   justify-content: center;
 }
-
 input[name="searchbar"] {
-  background-color: #cdc5c2;
-  border: none;
-  border-radius: 5px 0px 0px 5px;
-  padding-left: 10px;
-  height: 100%;
+  background: url("src/assets/img/search_grey.png");
+  background-position: 8px 10px;
+  background-repeat: no-repeat;
+  background-size: 15px;
+  border: solid 1px #D0A85C;
+  padding-left: 30px;
+  height: 35px;
   width: 15rem;
+  color: #7f847d;
+  border-right: none;
 }
-
 input[name="searchbar"]::placeholder {
-  color: black;
+  color: #7f847d;
 }
-
 input[name="searchbar"]:focus {
   outline: none;
 }
-
 button[type="submit"] {
-  border:none;
-  background-color: #cdc5c2;
-  border-radius: 0px 5px 5px 0px;
-  height: 100%;
-  display: flex;
+  border: solid 1px #D0A85C;
+  height: 35px;
   justify-content: center;
   align-items: center;
+  border-left: none;
+  border-radius: unset;
 }
-
 img#searchicon {
   width: 15px;
 }
-
-a#signup {
+div#signup {
   margin-top: 3rem;
+}
+.icon-validator {
+  color: chartreuse;
+}
+.input-group-bg {
+  background: rgb(0,0,0);
+  background: linear-gradient(350deg, rgba(0,0,0,1) 0%, rgba(11,20,37,1) 100%);
+}
+.sign-up {
+  margin-top: 20px;
+  font-size: 1.3em;
+  text-transform: uppercase;
+  color: white;
+}
+.sign-in-text {
+  color: #7f847d;
+}
+.sign-in {
+  color: white;
+}
+.sign-up-button {
+  border: 3px solid rgba(192,252,253,.7);
+  border-radius: 0;
+  padding: 13px 35px 12px;
+  color: #D0A85C;
+  font-size: 18px;
+  font-weight: 400;
+  font-style: normal;
+  text-transform: uppercase;
+  background: black;
+  box-shadow: 0 0 0 0 transparent;
+  border-image: linear-gradient(350deg, rgba(0,0,0,1) 0%, rgba(11,20,37,1) 100%);
+  border-image-slice: 1;
+  transition: all ease .5s;
+  text-decoration: none;
+  margin: 20px 0 5px 0;
+}
+.sign-up-button:hover {
+  box-shadow: 0 0 10px 4px rgb(192 252 253 / 40%), inset 0 0 5px 2px rgb(192 252 253 / 30%);
+  border: 3px solid rgba(192,252,253,.7);
+  background: transparent;
+  color: rgba(192,252,253,.7);
+  font-weight: bolder;
 }
