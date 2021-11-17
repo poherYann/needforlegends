@@ -11,3 +11,16 @@ text-align: center;
 span {
   margin-bottom: 1rem;
 }
+
+button.p-button {
+  background-color: #d0a85c;
+  border: 1px solid #d0a85c;
+  color: #0b1425;
+  font-weight: bold;
+}
+
+.p-selectbutton .p-button.p-highlight, .p-selectbutton .p-button.p-highlight:hover, .p-button:enabled:hover {
+  background: #d0a85c !important;
+  border-color: #d0a85c;
+  color: #0b1425 !important;
+}
