@@ -1,31 +1,29 @@
 <div class="container header-container fixed-top">
-  <div class="row">
-    <div class="col-3" ngbDropdown>
-      <a class="nav-link" tabindex="0" ngbDropdownToggle id="navbarDropdown3-2" role="button">
-        <img class="region-img" src="assets/img/region.png" alt="region">
+  <div ngbDropdown>
+    <a class="nav-link" tabindex="0" ngbDropdownToggle id="navbarDropdown3-2" role="button">
+      <img class="region-img" src="assets/img/region.png" alt="region">
+    </a>
+    <div ngbDropdownMenu aria-labelledby="navbarDropdown3-2" class="dropdown-menu">
+      <a class="dropdown-link" ngbDropdownItem href="#" (click)="$event.preventDefault()">Korea</a>
+      <a class="dropdown-link" ngbDropdownItem href="#" (click)="$event.preventDefault()">North America</a>
+      <a class="dropdown-link" ngbDropdownItem href="#" (click)="$event.preventDefault()">Brazil</a>
+      <a class="dropdown-link" ngbDropdownItem href="#" (click)="$event.preventDefault()">Europe West</a>
+      <a class="dropdown-link" ngbDropdownItem href="#" (click)="$event.preventDefault()">Oceania</a>
+      <a class="dropdown-link" ngbDropdownItem href="#" (click)="$event.preventDefault()">Europe Nordic & East</a>
+    </div>
+  </div>
+  <div>
+    <h1 class="h1-title">Need 4 Legends</h1>
+  </div>
+  <div ngbDropdown>
+      <a class="nav-link" tabindex="0" ngbDropdownToggle id="navbarDropdown3" role="button">
+        <i class="bi bi-box-arrow-in-right"></i>
       </a>
-      <div ngbDropdownMenu aria-labelledby="navbarDropdown3-2" class="dropdown-menu">
-        <a class="dropdown-link" ngbDropdownItem href="#" (click)="$event.preventDefault()">Korea</a>
-        <a class="dropdown-link" ngbDropdownItem href="#" (click)="$event.preventDefault()">North America</a>
-        <a class="dropdown-link" ngbDropdownItem href="#" (click)="$event.preventDefault()">Brazil</a>
-        <a class="dropdown-link" ngbDropdownItem href="#" (click)="$event.preventDefault()">Europe West</a>
-        <a class="dropdown-link" ngbDropdownItem href="#" (click)="$event.preventDefault()">Oceania</a>
-        <a class="dropdown-link" ngbDropdownItem href="#" (click)="$event.preventDefault()">Europe Nordic & East</a>
+      <div ngbDropdownMenu aria-labelledby="navbarDropdown3" class="dropdown-menu">
+        <a class="dropdown-link" ngbDropdownItem href="#" (click)="$event.preventDefault()" routerLink="/login">Connexion</a>
+        <a class="dropdown-link" ngbDropdownItem href="#" (click)="$event.preventDefault()" routerLink="/register">Inscription</a>
+        <a class="dropdown-link" ngbDropdownItem href="#" (click)="$event.preventDefault()" routerLink="/search">Recherche</a>
+        <a class="dropdown-link" ngbDropdownItem href="#" (click)="$event.preventDefault()" routerLink="/logout">Déconnexion</a>
       </div>
-    </div>
-    <div class="col-6">
-      <h1 class="h1-title">Need 4 Legends</h1>
-    </div>
-    <div class="col-3" ngbDropdown>
-        <a class="nav-link" tabindex="0" ngbDropdownToggle id="navbarDropdown3" role="button">
-          <i class="bi bi-box-arrow-in-right"></i>
-        </a>
-        <div ngbDropdownMenu aria-labelledby="navbarDropdown3" class="dropdown-menu">
-          <a class="dropdown-link" ngbDropdownItem href="#" (click)="$event.preventDefault()" routerLink="/login">Connexion</a>
-          <a class="dropdown-link" ngbDropdownItem href="#" (click)="$event.preventDefault()" routerLink="/register">Inscription</a>
-          <a class="dropdown-link" ngbDropdownItem href="#" (click)="$event.preventDefault()" routerLink="/search">Recherche</a>
-          <a class="dropdown-link" ngbDropdownItem href="#" (click)="$event.preventDefault()" routerLink="/logout">Déconnexion</a>
-        </div>
-    </div>
   </div>
 </div>
