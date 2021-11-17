@@ -12,6 +12,7 @@
 }
 .header-container {
   background-color: #0B1425;
+  border-bottom: #7f847d solid 1px;
 }
 .region-img {
   width: 70%;
