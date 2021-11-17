@@ -228,42 +228,32 @@ export class AlgorithmeComponent implements OnInit {
         } else if (TypeOfPlayer[m] === "objective") {
           for (let i = 0; i < valueArray.length; i++) {
 
-            let dataBaronKill = valueArray[i]['data']["baronKill"];
-            let dataDragonKills = valueArray[i]['data']["dragonKills"];
-            let dataInhibKills = valueArray[i]['data']["inhibKills"];
-            let dataTurretKills = valueArray[i]['data']["turretKills"];
-            let dataFirstTowerKill = valueArray[i]['data']["firstTowerKill"];//critère 3
-
             let dataMinion = valueArray[i]['data']["minion"];
             let dataVisionScore = valueArray[i]['data']["visionScore"];
             let dataTotalDamageTaken = valueArray[i]['data']["totalDamageTaken"];
             let dataDeaths = valueArray[i]['data']["deaths"];
-
-            let scoreobj = 0;
-            let arrayStatsType = ["baronKill", "dragonKill", "turretKill", "inhibKill", "firstTowerKill"];
+            let scoreSafe = 0;
+            let arrayStatsType = ["Minion", "visionScore", "totalDamageTaken", "deaths"];
 
             for (let n = 0; n < arrayStatsType.length; n++) {//on boucle sur tout les baremes aggressive que l'on a choisis dans arrayStatsType
 
               switch (arrayStatsType[n]) {//chaque critère à son barème de score
-                case "damage":
-                  scoreobj = this.ApplyScoreDependingValueType("baronKill", dataBaronKill, scoreobj);
+                case "Minion":
+                  scoreSafe = this.ApplyScoreDependingValueType("Minion", dataMinion, scoreSafe);
                   break;
-                case "firstKill":
-                  scoreobj = this.ApplyScoreDependingValueType("dragonKill", dataDragonKills, scoreobj);
+                case "visionScore":
+                  scoreSafe = this.ApplyScoreDependingValueType("visionScore", dataVisionScore, scoreSafe);
                   break;
-                case "firstTowerKill":
-                  scoreobj = this.ApplyScoreDependingValueType("firstTowerKill", dataFirstTowerKill, scoreobj);
+                case "totalDamageTaken":
+                  scoreSafe = this.ApplyScoreDependingValueType("totalDamageTaken", dataTotalDamageTaken, scoreSafe);
                   break;
-                case "goldEarned":
-                  scoreobj = this.ApplyScoreDependingValueType("turretKill", dataTurretKills, scoreobj);
-                  break;
-                case "ka":
-                  scoreobj = this.ApplyScoreDependingValueType("inhibKill", dataInhibKills, scoreobj);
+                case "deaths":
+                  scoreSafe = this.ApplyScoreDependingValueType("deaths", dataDeaths, scoreSafe);
                   break;
               }
 
             }
-            result = {"summoner": valueArray[i]['data']["summoner"], "scoreObjective": scoreobj};
+            result = {"summoner": valueArray[i]['data']["summoner"], "scoreSafe": scoreSafe};
             arrayResult.push(result);
           }
           this.arrayPassive = arrayResult;
@@ -280,13 +270,13 @@ export class AlgorithmeComponent implements OnInit {
 
     switch (type){//on Applique le bareme selon le critere que la fonction reçois
       case "damage":
-        if(value >= 0 && value <= 5000)
+        if(value >= 0 && value <= 17500)
           score = score + 1;
-        else if (value > 5000 && value <= 7500 )
+        else if (value > 17500 && value <= 25000 )
           score = score + 2;
-        else if (value > 7500 && value <= 15000)
+        else if (value > 25000 && value <= 35000)
           score = score + 3;
-        else if (value > 15000 && value <= 22500 )
+        else if (value > 35000 && value <= 45000 )
           score = score + 4;
         else
           score = score + 5;
@@ -307,11 +297,11 @@ export class AlgorithmeComponent implements OnInit {
         if(value == 0)
           score = score + 0;
         else if (value >=1 && value <= 8 )
+          score = score + 1;
+        else if (value > 8 && value <= 20)
           score = score + 2;
-        else if (value > 8 && value <= 12)
+        else if (value > 20 && value <= 25 )
           score = score + 3;
-        else if (value > 12 && value <= 20 )
-          score = score + 4;
         else
           score = score + 5;
         break;
@@ -361,9 +351,9 @@ export class AlgorithmeComponent implements OnInit {
         break;
       case "turretKill":
         if(value == 0 )
-          score = score + 0;
-        else if (value >= 1 && value <= 2 )
           score = score + 1;
+        else if (value >= 1 && value <= 2 )
+          score = score + 2;
         else if (value >= 3 && value <= 6)
           score = score + 3;
         else if (value >= 7 && value <= 10)
@@ -382,6 +372,54 @@ export class AlgorithmeComponent implements OnInit {
           score = score + 4;
         else
           score = score + 5;
+        break;
+      case "Minion":
+        if(value >= 0 && value <= 100)
+          score = score + 1;
+        else if (value > 100 && value <= 175 )
+          score = score + 2;
+        else if (value > 175 && value <= 250)
+          score = score + 3;
+        else if (value > 250 && value <= 300 )
+          score = score + 4;
+        else
+          score = score + 5;
+        break;
+      case "visionScore":
+        if(value >= 0 && value <= 15)
+          score = score + 1;
+        else if (value > 15 && value <= 30 )
+          score = score + 2;
+        else if (value > 30 && value <= 75)
+          score = score + 3;
+        else if (value > 75 && value <= 125 )
+          score = score + 4;
+        else
+          score = score + 5;
+        break;
+      case "totalDamageTaken":
+        if(value >= 0 && value <= 7500)
+          score = score + 5;
+        else if (value > 7500 && value <= 12500 )
+          score = score + 4;
+        else if (value > 12500 && value <= 20000)
+          score = score + 3;
+        else if (value > 20000 && value <= 35000 )
+          score = score + 2;
+        else
+          score = score + 1;
+        break;
+      case "deaths":
+        if(value >= 0 && value <= 1)
+          score = score + 5;
+        else if (value > 2 && value <= 3 )
+          score = score + 4;
+        else if (value > 3 && value <= 6)
+          score = score + 3;
+        else if (value > 6 && value <= 12 )
+          score = score + 2;
+        else
+          score = score + 1;
         break;
 
     }
@@ -420,7 +458,7 @@ export class AlgorithmeComponent implements OnInit {
       return;
     }
 
-    if (result.agressive==true){
+    if (result.agressive){
       if(result.agressivePlayer>0){
 
         let highest=0;
@@ -458,17 +496,77 @@ export class AlgorithmeComponent implements OnInit {
         this.toaster.error("You must set a player number !")
       }
     }
-    if (result.objective==true){
+    if (result.objective){
+
       if(result.objectivePlayer>0){
 
+        let highest=0;
+
+        for(let y=0;y<this.arrayObjective.length;y++){
+          if(highest<this.arrayObjective[y].scoreObjective){
+            highest=this.arrayObjective[y].scoreObjective;
+          }
+        }
+
+        // @ts-ignore
+        let PlayerArraySelected=[];
+
+        while (PlayerArraySelected.length<result.objectivePlayer) {//Tant que le nombre joueur n'est pas éagle à celui qu'on recherche on continue la boucle
+
+          // @ts-ignore
+          let PlayerSelectedByScore=this.arrayObjective.filter(elem=>elem.scoreObjective==highest);//On selectionne le ou les scores les plus hauts ....
+
+          if(PlayerSelectedByScore[0]!=null) {//on check si il y a des joueurs qui ont le score "highest"
+            for (let m = 0; m < PlayerSelectedByScore.length; m++) {
+              PlayerArraySelected.push([PlayerSelectedByScore[m].summoner,PlayerSelectedByScore[m].scoreObjective]);//On met les joueurs avec le score le plus haut
+              if(PlayerArraySelected.length===result.objectivePlayer){//si le nombre de joueur max à été atteint on casse la boucle
+                break;
+              }
+              // ce sont eux qui match le plus selon le type sélectionné
+            }
+          }
+
+          highest=highest-1;//on retire 1 à la recherche de score afin de descendre en score est trouvé le prochain joueur le plus "haut"
+
+        }
+        console.log(PlayerArraySelected);
       }else{
         this.toaster.error("You must set a player number !")
       }
     }
 
-    if (result.safe==true){
+    if (result.safe){
       if(result.safePlayer>0){
+        let highest=0;
 
+        for(let y=0;y<this.arrayPassive.length;y++){
+          if(highest<this.arrayPassive[y].scoreSafe){
+            highest=this.arrayPassive[y].scoreSafe;
+          }
+        }
+
+        // @ts-ignore
+        let PlayerArraySelected=[];
+
+        while (PlayerArraySelected.length<result.safePlayer) {//Tant que le nombre joueur n'est pas éagle à celui qu'on recherche on continue la boucle
+
+          // @ts-ignore
+          let PlayerSelectedByScore=this.arrayPassive.filter(elem=>elem.scoreSafe==highest);//On selectionne le ou les scores les plus hauts ....
+
+          if(PlayerSelectedByScore[0]!=null) {//on check si il y a des joueurs qui ont le score "highest"
+            for (let m = 0; m < PlayerSelectedByScore.length; m++) {
+              PlayerArraySelected.push([PlayerSelectedByScore[m].summoner,PlayerSelectedByScore[m].scoreSafe]);//On met les joueurs avec le score le plus haut
+              if(PlayerArraySelected.length===result.safePlayer){//si le nombre de joueur max à été atteint on casse la boucle
+                break;
+              }
+              // ce sont eux qui match le plus selon le type sélectionné
+            }
+          }
+
+          highest=highest-1;//on retire 1 à la recherche de score afin de descendre en score est trouvé le prochain joueur le plus "haut"
+
+        }
+        console.log(PlayerArraySelected);
       }else{
         this.toaster.error("You must set a player number !")
       }
