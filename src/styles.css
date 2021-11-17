@@ -6,6 +6,7 @@
 @import "app/header/header.component.css";
 @import "~bootstrap-icons/font/bootstrap-icons.css";
 @import "app/match/match.component.css";
+@import "app/algorithme/algorithme.component.css";
 
 body {
   background-color: #0B1425!important;

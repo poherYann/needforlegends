@@ -1,3 +1,23 @@
 <div class="content">
-
+  <form [formGroup]="algoForm" (ngSubmit)="onSubmit()">
+  <span class="p-float-label">
+    <label for="agressive"> Dominant Player</label>
+  <input type="checkbox" id="agressive" formControlName="agressive">
+  </span>
+    <br>
+    <input type="number" id="" formControlName="agressivePlayer" min="0" max="4">
+    <span class="p-float-label">
+    <input type="checkbox" id="objective" formControlName="objective">
+    <label for="objective">Objective player</label><br>
+  </span>
+    <br>
+    <input type="number" id="objectivePlayer" formControlName="objectivePlayer" min="0" max="4">
+    <span class="p-float-label">
+    <input type="checkbox" id="safe" formControlName="safe">
+    <label for="objective">Safe Player</label><br>
+  </span>
+    <br>
+    <input type="number" id="safePlayer" formControlName="safePlayer" min="0" max="4">
+    <button pButton type="submit" class="p-button-raised">Valider</button>
+  </form>
 </div>
