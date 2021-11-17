@@ -1,0 +1,13 @@
+div.container {
+  margin-top: 4rem;
+  display: flex;
+  justify-content: center;
+}
+
+form {
+text-align: center;
+}
+
+span {
+  margin-bottom: 1rem;
+}
