@@ -7,5 +7,10 @@ import {Component, OnInit} from '@angular/core';
 })
 export class AppComponent  {
   title = 'needforlegends';
+  public token:any;
 
+   constructor(){
+     this.token=localStorage.getItem('token');
+
+  }
 }

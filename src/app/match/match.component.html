@@ -1,4 +1,7 @@
 <div class="content">
+
+  <app-search></app-search>
+  <h1 *ngIf="test">sdqsqdqsdsq</h1>
   <img src="http://ddragon.leagueoflegends.com/cdn/10.15.1/img/profileicon/{{ arrayMatches['matchs'][0]['user'][0]['userStat']['profilIcon'] }}.png" alt="" id="profilpic">
   <span *ngFor="let match of arrayMatches['matchs']" style="width: 100%">
     <span *ngIf="match['user'][0]['userParticipant']['win'] == 'Win';else loseDiv">
@@ -8,18 +11,19 @@
         <div class="matchleft">
           <span *ngFor="let champion of arrayChampions.keys(arrayChampions)">
             <section *ngIf="arrayChampions[champion]['KeyChampion']==match['champion']">
-              <img src="//opgg-static.akamaized.net/images/lol/champion/{{ arrayChampions[champion]['Image']['full'] }}?image=c_scale,q_auto,w_46&v=1635906101" alt="">
+              <img src="https://opgg-static.akamaized.net/images/lol/champion/{{ arrayChampions[champion]['Image']['full'] }}?image=c_scale,q_auto,w_46&v=1635906101" alt="">
             </section>
           </span>
           <div class="spells">
             <span *ngFor="let summoner of arraySummoners">
                <img *ngIf="summoner['keySummoners']==match['user'][0]['userStat']['spell1Id'] || summoner['keySummoners']==match['user'][0]['userStat']['spell2Id']"
-                    src="//opgg-static.akamaized.net/images/lol/spell/{{ summoner['image'] }}?image=c_scale,q_auto,w_22&v=1635906101" alt="">
+                    src="https://opgg-static.akamaized.net/images/lol/spell/{{ summoner['image'] }}?image=c_scale,q_auto,w_22&v=1635906101" alt="">
+
               </span>
           </div>
           <div class="runes">
-            <img src="//opgg-static.akamaized.net/images/lol/perk/{{ match['user'][0]['userStat']['perk0'] }}.png?image=c_scale,q_auto,w_22&v=1635906101" alt="">
-            <img src="//opgg-static.akamaized.net/images/lol/perk/{{ match['user'][0]['userStat']['perk5'] }}.png?image=c_scale,q_auto,w_22&v=1635906101" alt="">
+            <img src="https://opgg-static.akamaized.net/images/lol/perk/{{ match['user'][0]['userStat']['perk0'] }}.png?image=c_scale,q_auto,w_22&v=1635906101" alt="">
+            <img src="https://opgg-static.akamaized.net/images/lol/perk/{{ match['user'][0]['userStat']['perk5'] }}.png?image=c_scale,q_auto,w_22&v=1635906101" alt="">
           </div>
         </div>
         <div class="matchright">
@@ -48,18 +52,18 @@
         <div class="matchleft">
           <span *ngFor="let champion of arrayChampions.keys(arrayChampions)">
             <section *ngIf="arrayChampions[champion]['KeyChampion']==match['champion']">
-              <img src="//opgg-static.akamaized.net/images/lol/champion/{{ arrayChampions[champion]['Image']['full'] }}?image=c_scale,q_auto,w_46&v=1635906101" alt="">
+              <img src="https://opgg-static.akamaized.net/images/lol/champion/{{ arrayChampions[champion]['Image']['full'] }}?image=c_scale,q_auto,w_46&v=1635906101" alt="">
             </section>
           </span>
           <div class="spells">
             <span *ngFor="let summoner of arraySummoners">
                <img *ngIf="summoner['keySummoners']==match['user'][0]['userStat']['spell1Id'] || summoner['keySummoners']==match['user'][0]['userStat']['spell2Id']"
-                    src="//opgg-static.akamaized.net/images/lol/spell/{{ summoner['image'] }}?image=c_scale,q_auto,w_22&v=1635906101" alt="">
+                    src="https://opgg-static.akamaized.net/images/lol/spell/{{ summoner['image'] }}?image=c_scale,q_auto,w_22&v=1635906101" alt="">
               </span>
           </div>
           <div class="runes">
-            <img src="//opgg-static.akamaized.net/images/lol/perk/{{ match['user'][0]['userStat']['perk0'] }}.png?image=c_scale,q_auto,w_22&v=1635906101" alt="">
-            <img src="//opgg-static.akamaized.net/images/lol/perk/{{ match['user'][0]['userStat']['perk5'] }}.png?image=c_scale,q_auto,w_22&v=1635906101" alt="">
+            <img src="https://opgg-static.akamaized.net/images/lol/perk/{{ match['user'][0]['userStat']['perk0'] }}.png?image=c_scale,q_auto,w_22&v=1635906101" alt="">
+            <img src="https://opgg-static.akamaized.net/images/lol/perk/{{ match['user'][0]['userStat']['perk5'] }}.png?image=c_scale,q_auto,w_22&v=1635906101" alt="">
           </div>
         </div>
         <div class="matchright">

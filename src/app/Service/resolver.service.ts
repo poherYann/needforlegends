@@ -73,3 +73,18 @@ export class GetSummonerResolver implements Resolve<any> {
 
 }
 
+@Injectable({
+    providedIn: 'root'
+  }
+)
+export class GetMatchStatResolver implements Resolve<any> {
+  constructor(private matchService:MatchService) {
+  }
+
+  resolve(route: ActivatedRouteSnapshot,rstate: RouterStateSnapshot):Observable<any>{
+    let token= localStorage.getItem('token');
+    return this.matchService.getMatchStat(token);
+  }
+
+}
+

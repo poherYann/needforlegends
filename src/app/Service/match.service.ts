@@ -35,4 +35,15 @@ export class MatchService {
 
   }
 
+  getMatchStat( token:string | null){
+
+    let httpOption={
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer '+token
+      })
+    }
+    return this.http.post(this.url+'/api/get/matchStat','',httpOption);
+  }
+
 }
