@@ -14,6 +14,7 @@ export class MatchComponent implements OnInit {
   public arrayChampions:any;
   public arrayItems:any;
   public arraySummoners:any;
+  public test=true;
 
   constructor(private route: ActivatedRoute,private matchService:MatchService) {
 
@@ -36,6 +37,11 @@ export class MatchComponent implements OnInit {
         console.log(error);
 
       });
+  }
+
+  ngAfterViewInit():void{
+    this.test=false;
+
   }
 
 }

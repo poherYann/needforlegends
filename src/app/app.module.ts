@@ -24,17 +24,28 @@ import {AccordionModule} from "primeng/accordion";
 import {SearchComponent} from "./search/search.component";
 import {LogoutComponent} from "./logout/logout.component";
 import {AlgorithmeComponent} from "./algorithme/algorithme.component";
-import {GetChampionResolver, GetItemResolver, GetMatchResolver, GetSummonerResolver} from "./Service/resolver.service";
+import {
+  GetChampionResolver,
+  GetItemResolver,
+  GetMatchResolver,
+  GetMatchStatResolver,
+  GetSummonerResolver
+} from "./Service/resolver.service";
 import {timestampDifferenceComponent} from "./Pipe/timestampDifferenceComponent";
 import {timestampComponent} from "./Pipe/timestampComponent";
-import { Need4legendsComponent } from './need4legends/need4legends.component';
+import {
+  AuthGuardService as AuthGuard
+} from './Service/auth-guard.service';
+import {MatProgressBarModule} from "@angular/material/progress-bar";
+import {TriStateCheckboxModule} from "primeng/tristatecheckbox";
+import {InputNumberModule} from "primeng/inputnumber";
 
 const appRoutes: Routes = [
   { path: 'header', component: HeaderComponent },
   { path: 'footer', component: FooterComponent },
   { path: 'games', component: GamesComponent },
-  { path: 'home', component: HomeComponent },
-  { path: 'need4legends', component: Need4legendsComponent },
+  { path: '', component: SearchComponent },
+  { path: 'home', component: SearchComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
   { path: 'activation/:token', component: ActivationComponent },
@@ -43,7 +54,10 @@ const appRoutes: Routes = [
     },
   },
   { path:'search',component: SearchComponent },
-  { path:'algo',component: AlgorithmeComponent },
+  { path:'algo',component: AlgorithmeComponent, canActivate: [AuthGuard],
+    resolve:{
+    data: GetMatchStatResolver,
+    } },
   { path:'logout',component: LogoutComponent },
 
 ];
@@ -64,8 +78,7 @@ const appRoutes: Routes = [
     MatchComponent,
     SearchComponent,
     AlgorithmeComponent,
-    LogoutComponent,
-    Need4legendsComponent
+    LogoutComponent
   ],
   imports: [
     BrowserModule,
@@ -82,8 +95,12 @@ const appRoutes: Routes = [
     ToastrModule.forRoot(),
     NgbModule,
     AccordionModule,
+    MatProgressBarModule,
+    TriStateCheckboxModule,
+    InputNumberModule,
+
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
