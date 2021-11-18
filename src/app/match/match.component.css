@@ -36,8 +36,10 @@ div.matchright {
 
 div.text {
   display: flex;
-  justify-content: space-between;
-  text-align: right;
+  text-align: center;
+  align-content: stretch;
+  flex-wrap: wrap;
+  justify-content: space-around;
 }
 
 div.text p {
@@ -81,11 +83,52 @@ div.spells img, div.runes img{
 }
 
 div.imgs {
-  margin: 0.3rem 0;
+  padding: unset;
+  margin: 1px;
+  flex: auto;
 }
 .lose{
   background: lightcoral !important;
 }
 .win{
   background: lightblue !important;
+}
+.divMatchLeft,.divMatchRight{
+  display: contents;
+}
+
+.imgs img{
+  width: fit-content !important;
+}
+.items{
+  text-align: center;
+  margin-left: 5px;
+}
+
+.img-item{
+  padding: unset !important;
+}
+.matchright{
+  font-size: 12px !important;
+}
+.match{
+  width: 100% !important;
+  margin-top: 1em;
+  margin-bottom: unset !important;
+}
+.detail{
+  display: flex;
+  justify-content: flex-end;
+}
+button.p-button {
+  background-color: #d0a85c;
+  border: 1px solid #d0a85c;
+  color: #0b1425;
+  font-weight: bold;
+}
+
+.p-selectbutton .p-button.p-highlight, .p-selectbutton .p-button.p-highlight:hover, .p-button:enabled:hover {
+  background: #d0a85c!important;
+  border-color: #d0a85c;
+  color: #0b1425!important;
 }

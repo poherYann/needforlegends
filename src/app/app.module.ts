@@ -72,7 +72,7 @@ const appRoutes: Routes = [
     MatchComponent,
     SearchComponent,
     AlgorithmeComponent,
-    LogoutComponent
+    LogoutComponent,
   ],
   imports: [
     BrowserModule,
