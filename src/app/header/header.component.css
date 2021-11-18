@@ -12,7 +12,6 @@
 }
 .header-container {
   background-color: #0B1425;
-  border-bottom: #7f847d solid 1px;
 }
 .region-img {
   width: 80%;
@@ -28,4 +27,16 @@
   background-color: #D0A85C;
   color: #0B1425;
  }
+.icon-n4l {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  border: #7f847d solid 1px;
+  margin: 5px auto 0 auto;
+  background-image: url("src/assets/img/icon-n4l.jpg");
+  background-size: contain;
+}
+.border-container {
+  border-bottom: #7f847d solid 1px;
+}
 

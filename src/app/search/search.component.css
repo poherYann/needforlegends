@@ -2,6 +2,7 @@ div.content {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 5rem;
 }
 
 img#profilpic {
@@ -28,15 +29,12 @@ input[name="searchbar"] {
   color: #7f847d;
   border-right: none;
 }
-
 input[name="searchbar"]::placeholder {
   color: #7f847d;
 }
-
 input[name="searchbar"]:focus {
   outline: none;
 }
-
 button[type="submit"] {
   border: solid 1px #D0A85C;
   height: 35px;
@@ -45,7 +43,6 @@ button[type="submit"] {
   border-left: none;
   border-radius: unset;
 }
-
 img#searchicon {
   width: 15px;
 }
