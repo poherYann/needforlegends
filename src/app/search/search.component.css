@@ -3,6 +3,7 @@ div.content {
   flex-direction: column;
   align-items: center;
 }
+
 img#profilpic {
   border: 2px solid #d0a85c;
   width: 5rem;
@@ -14,6 +15,7 @@ div.search {
   display: flex;
   justify-content: center;
 }
+
 input[name="searchbar"] {
   background: url("src/assets/img/search_grey.png");
   background-position: 8px 10px;
@@ -26,12 +28,15 @@ input[name="searchbar"] {
   color: #7f847d;
   border-right: none;
 }
+
 input[name="searchbar"]::placeholder {
   color: #7f847d;
 }
+
 input[name="searchbar"]:focus {
   outline: none;
 }
+
 button[type="submit"] {
   border: solid 1px #D0A85C;
   height: 35px;
@@ -40,6 +45,7 @@ button[type="submit"] {
   border-left: none;
   border-radius: unset;
 }
+
 img#searchicon {
   width: 15px;
 }
@@ -88,4 +94,14 @@ div#signup {
   background: transparent;
   color: rgba(192,252,253,.7);
   font-weight: bolder;
+}
+
+
+@media screen and (min-width: 768px) {
+  form {
+    height: 3rem;
+  }
+  input[name="searchbar"] {
+    width: 30rem;
+  }
 }
