@@ -7,6 +7,9 @@
   justify-content: space-around;
   background-color: #7f847d;
 }
+li {
+  width: 25%;
+}
 .nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link {
   color: #D0A85C;
   background-color: #0B1425;
