@@ -1,11 +1,15 @@
-<div class="content">
+<div class="content" xmlns="http://www.w3.org/1999/html">
+  <app-search></app-search>
   <img
     src="http://ddragon.leagueoflegends.com/cdn/10.15.1/img/profileicon/{{ arrayMatches['matchs'][0]['user'][0]['userStat']['profilIcon'] }}.png"
     alt="" id="profilpic">
   <span *ngFor="let match of arrayMatches['matchs']" style="width: 100%">
     <span *ngIf="match['user'][0]['userParticipant']['win'] == 'Win';else loseDiv">
       <div class="match win">
-        <p>Victoire {{ match['user'][0]['userParticipant']['gameDuration']['timestamp']|timestamp }}</p>
+        <div class="text">
+          <p>Victoire {{ match['user'][0]['userParticipant']['gameDuration']['timestamp']|timestamp }}</p>
+          <p> {{ match['user'][0]['userParticipant']['gameCreation']['timestamp'] * 1000| date: 'dd-MM-yyy'}}</p>
+        </div>
         <span class="vertical-line green"></span>
         <div class="matchleft">
           <span *ngFor="let champion of arrayChampions.keys(arrayChampions)">
@@ -34,36 +38,39 @@
         </div>
         <div class="matchright">
           <div class="text">
-            <p>{{ match['user'][0]['userStat']['kills'] }} / <span
-              class="death">{{ match['user'][0]['userStat']['deaths'] }}</span> /
-              {{ match['user'][0]['userStat']['assist'] }}</p>
-            <div>
-              <p>{{ match['user'][0]['userParticipant']['gameMode'] }} </p>
-              <p>{{ match['user'][0]['userParticipant']['gameCreation']['timestamp'] * 1000| date: 'dd-MM-yyy'}}</p>
-            </div>
-            <div class="imgs" *ngFor="let item of match['user'][0]['userStat']['item']">
+            <p>{{ match['user'][0]['userStat']['kills'] }} / <span class="death">{{ match['user'][0]['userStat']['deaths'] }}</span> /{{ match['user'][0]['userStat']['assist'] }}
+              | {{ match['user'][0]['userParticipant']['gameMode'] }} </p>
+          </div>
+           <div class="text">
+             <p>{{ ((match['user'][0]['userStat']['kills'] + match['user'][0]['userStat']['assist']) / match['user'][0]['userStat']['deaths'])| number  }} KDA
+               | {{ match['user'][0]['userStat']['totalMinionsKilled'] }} CS</p>
+          </div>
+          <div class="items">
+            <div class="row">
+              <div class="img-item col-4" *ngFor="let item of match['user'][0]['userStat']['item']">
                 <img
                   src="https://opgg-static.akamaized.net/images/lol/item/{{ item }}.png?image=c_scale,q_auto,w_22&v=1635906101"
                   alt="">
+              </div>
+              </div>
             </div>
-            <div class="text">
-              <p>{{ ((match['user'][0]['userStat']['kills'] + match['user'][0]['userStat']['assist']) / match['user'][0]['userStat']['deaths'])| number  }}
-                KDA</p>
-              <p>{{ match['user'][0]['userStat']['totalMinionsKilled'] }} CS</p>
-            </div>
-          </div>
         </div>
-        <button  (click)="match_detail(match['match_id'])">test</button>
+      </div>
+      <div class="detail">
+        <button pButton (click)="match_detail(match['match_id'])" class="p-button-raised"><i class="bi bi-plus-square-fill"></i></button>
       </div>
 </span>
 
-    <div id="{{ match['match_id'] }}" style="display: none">
-      <p>test</p>
-    </div>
+      <div id="{{ match['match_id'] }}" >
+
+      </div>
 
     <ng-template #loseDiv>
       <div class="match lose">
-        <p>Défaite {{ match['user'][0]['userParticipant']['gameDuration']['timestamp']|timestamp }}</p>
+       <div class="text">
+          <p>Défaite {{ match['user'][0]['userParticipant']['gameDuration']['timestamp']|timestamp }}</p>
+          <p> {{ match['user'][0]['userParticipant']['gameCreation']['timestamp'] * 1000| date: 'dd-MM-yyy'}}</p>
+        </div>
         <span class="vertical-line red"></span>
         <div class="matchleft">
           <span *ngFor="let champion of arrayChampions.keys(arrayChampions)">
@@ -92,27 +99,29 @@
         </div>
         <div class="matchright">
           <div class="text">
-            <p>{{ match['user'][0]['userStat']['kills'] }} / <span
-              class="death">{{ match['user'][0]['userStat']['deaths'] }}</span> /
-              {{ match['user'][0]['userStat']['assist'] }}</p>
-            <div>
-              <p>{{ match['user'][0]['userParticipant']['gameMode'] }} </p>
-              <p>{{ match['user'][0]['userParticipant']['gameCreation']['timestamp'] * 1000| date: 'dd-MM-yyy'}}</p>
-            </div>
-            <div class="imgs" *ngFor="let item of match['user'][0]['userStat']['item']">
+            <p>{{ match['user'][0]['userStat']['kills'] }} / <span class="death">{{ match['user'][0]['userStat']['deaths'] }}</span> /{{ match['user'][0]['userStat']['assist'] }}
+              | {{ match['user'][0]['userParticipant']['gameMode'] }} </p>
+          </div>
+           <div class="text">
+             <p>{{ ((match['user'][0]['userStat']['kills'] + match['user'][0]['userStat']['assist']) / match['user'][0]['userStat']['deaths'])| number  }} KDA
+               | {{ match['user'][0]['userStat']['totalMinionsKilled'] }} CS</p>
+          </div>
+           <div class="items">
+            <div class="row">
+              <div class="img-item col-4" *ngFor="let item of match['user'][0]['userStat']['item']">
                 <img
                   src="https://opgg-static.akamaized.net/images/lol/item/{{ item }}.png?image=c_scale,q_auto,w_22&v=1635906101"
                   alt="">
+              </div>
+              </div>
             </div>
-            <div class="text">
-              <p>{{ ((match['user'][0]['userStat']['kills'] + match['user'][0]['userStat']['assist']) / match['user'][0]['userStat']['deaths'])| number  }}
-                KDA</p>
-              <p>{{ match['user'][0]['userStat']['totalMinionsKilled'] }} CS</p>
-            </div>
-          </div>
         </div>
-                <button  (click)="match_detail(match['match_id'])">test</button>
+      </div>
+      <div class="detail">
+        <button pButton (click)="match_detail(match['match_id'])" class="p-button-raised"><i class="bi bi-plus-square-fill"></i></button>
       </div>
       </ng-template>
+
     </span>
+
 </div>
