@@ -13,9 +13,12 @@
 .header-container {
   background-color: #0B1425;
   border-bottom: #7f847d solid 1px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 .region-img {
-  width: 80%;
+  width: 1.8rem;
 }
 .dropdown-menu {
   background-color: #0B1425;
