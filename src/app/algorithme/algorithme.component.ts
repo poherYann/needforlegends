@@ -4,6 +4,8 @@ import {FormBuilder, Validators} from "@angular/forms";
 import {Register} from "../register";
 import {Algo} from "../algo";
 import {ToastrService} from "ngx-toastr";
+// @ts-ignore
+import {GetuserService} from "../Service/getuser.service";
 
 @Component({
   selector: 'app-algorithme',
@@ -37,6 +39,7 @@ export class AlgorithmeComponent implements OnInit {
   private goldEarned=0;
   private firstTowerKill=0;
   private scoreUser=[];
+  public allPlayer:any;
   private arrayAggressive:any;
   private arrayObjective:any;
   private arrayPassive:any;
@@ -46,18 +49,27 @@ export class AlgorithmeComponent implements OnInit {
   private scoreVision=0;
   private totalDamageTaken=0;
   private role:any;
+  public show=false;
+  public currentUser:any;
+  public showAll=false;
+  public resultAggressive:any;
+  public resultObjective:any;
+  public resultSafe:any;
+  public showAggressive=false;
+  public showSafe=false;
+  public showObjective=false;
 
-  constructor(private route:ActivatedRoute,private fb:FormBuilder,private toaster:ToastrService) { }
+  constructor(private route:ActivatedRoute,private fb:FormBuilder,private toaster:ToastrService,private user:GetuserService) { }
 
   ngOnInit(): void {
 
-    this.route.data.subscribe(value =>{
+    this.user.getUser("",localStorage.getItem("token"));
 
+    this.route.data.subscribe(value =>{
 
         this.arrayMatchStat=value;
         let array=[];
 
-        console.log(this.arrayMatchStat);
         for(let k=1;k<this.arrayMatchStat['data']['matchs'].length;k++) {
 
           if (this.arrayMatchStat['data']['matchs'][k]['summoner'][0][0] == this.arrayMatchStat['data']['matchs'][k - 1]['summoner'][0][0]) {
@@ -112,6 +124,8 @@ export class AlgorithmeComponent implements OnInit {
                 "role":this.role,
                 "scoreVision": (this.scoreVision / this.numberMatch).toFixed(2),
                 "deaths": (this.deaths / this.numberMatch).toFixed(2),
+                "totalGames":this.numberMatch,
+                "profilIcon":this.arrayMatchStat['data']['matchs'][k - 1]["user"][0]['userStat']['profilIcon'],
                 "summoner": this.arrayMatchStat['data']['matchs'][k - 1]['summoner'][0][0]
               }
             };
@@ -122,7 +136,8 @@ export class AlgorithmeComponent implements OnInit {
           }
         }
 
-        console.log(this.scoreUser);
+        this.allPlayer=this.scoreUser;
+        console.log(this.allPlayer);
 
         this.Score(this.scoreUser);
 
@@ -175,9 +190,8 @@ export class AlgorithmeComponent implements OnInit {
                   break;
               }
 
-
             }
-            result = {"summoner": valueArray[i]['data']["summoner"], "score": score};
+            result = {"summoner": valueArray[i]['data']["summoner"], "score": score,"data":valueArray[i]['data']};
             arrayResult.push(result);//on enregistre le score et le summoner dans un tableau qui nous servira à sortir les joueurs les plus aggressives
           }
           this.arrayAggressive = arrayResult;
@@ -221,7 +235,7 @@ export class AlgorithmeComponent implements OnInit {
               }
 
             }
-            result = {"summoner": valueArray[i]['data']["summoner"], "scoreObjective": scoreobj};
+            result = {"summoner": valueArray[i]['data']["summoner"], "scoreObjective": scoreobj,"data":valueArray[i]['data']};
             arrayResult.push(result);
           }
           this.arrayObjective = arrayResult;
@@ -255,7 +269,7 @@ export class AlgorithmeComponent implements OnInit {
               }
 
             }
-            result = {"summoner": valueArray[i]['data']["summoner"], "scoreSafe": scoreSafe};
+            result = {"summoner": valueArray[i]['data']["summoner"], "scoreSafe": scoreSafe,"data":valueArray[i]['data']};
             arrayResult.push(result);
           }
           this.arrayPassive = arrayResult;
@@ -453,127 +467,158 @@ export class AlgorithmeComponent implements OnInit {
 
   onSubmit(){
 
+    this.showAll=false;
+    this.showObjective=false;
+    this.showSafe=false;
+    this.showAggressive=false;
+    this.resultSafe=null;
+    this.resultObjective=null;
+    this.resultAggressive=null;
+    let numberPlayer=0;
+    this.currentUser=localStorage.getItem("user");
     let result : Algo=this.algoForm.value;
-    let numberPlayer=result.aggressivePlayer+result.objectivePlayer+result.safePlayer;
+    console.log(result.aggressivePlayer);
+    console.log(result.objectivePlayer);
+    console.log(result.safePlayer);
+
+    numberPlayer=result.aggressivePlayer+result.objectivePlayer+result.safePlayer;
     if(numberPlayer>4){
       this.toaster.error("The player number can't be highest than 4 !")
       return;
     }
 
-    if (result.aggressive){
-      if(result.aggressivePlayer>0){
+    if(!result.all) {
 
-        let highest=0;
+      if (result.aggressive) {
+        if (result.aggressivePlayer > 0) {
 
-        for(let y=0;y<this.arrayAggressive.length;y++){
-          if(highest<this.arrayAggressive[y].score){
-            highest=this.arrayAggressive[y].score;
-          }
-        }
+          let highest = 0;
 
-        // @ts-ignore
-        let PlayerArraySelected=[];
-
-        while (PlayerArraySelected.length<result.aggressivePlayer) {//Tant que le nombre joueur n'est pas éagle à celui qu'on recherche on continue la boucle
-
-          // @ts-ignore
-          let PlayerSelectedByScore=this.arrayAggressive.filter(elem=>elem.score==highest);//On selectionne le ou les scores les plus hauts ....
-
-          if(PlayerSelectedByScore[0]!=null) {//on check si il y a des joueurs qui ont le score "highest"
-            for (let m = 0; m < PlayerSelectedByScore.length; m++) {
-              PlayerArraySelected.push([PlayerSelectedByScore[m].summoner,PlayerSelectedByScore[m].score]);//On met les joueurs avec le score le plus haut
-              if(PlayerArraySelected.length===result.aggressivePlayer){//si le nombre de joueur max à été atteint on casse la boucle
-                break;
-              }
-              // ce sont eux qui match le plus selon le type sélectionné
+          for (let y = 0; y < this.arrayAggressive.length; y++) {
+            if (highest < this.arrayAggressive[y].score) {
+              highest = this.arrayAggressive[y].score;
             }
           }
 
-          highest=highest-1;//on retire 1 à la recherche de score afin de descendre en score est trouvé le prochain joueur le plus "haut"
-
-        }
-        console.log(PlayerArraySelected);
-
-      }else{
-        this.toaster.error("You must set a player number !")
-      }
-    }
-    if (result.objective){
-
-      if(result.objectivePlayer>0){
-
-        let highest=0;
-
-        for(let y=0;y<this.arrayObjective.length;y++){
-          if(highest<this.arrayObjective[y].scoreObjective){
-            highest=this.arrayObjective[y].scoreObjective;
-          }
-        }
-
-        // @ts-ignore
-        let PlayerArraySelected=[];
-
-        while (PlayerArraySelected.length<result.objectivePlayer) {//Tant que le nombre joueur n'est pas éagle à celui qu'on recherche on continue la boucle
-
           // @ts-ignore
-          let PlayerSelectedByScore=this.arrayObjective.filter(elem=>elem.scoreObjective==highest);//On selectionne le ou les scores les plus hauts ....
+          let PlayerArraySelected = [];
 
-          if(PlayerSelectedByScore[0]!=null) {//on check si il y a des joueurs qui ont le score "highest"
-            for (let m = 0; m < PlayerSelectedByScore.length; m++) {
-              PlayerArraySelected.push([PlayerSelectedByScore[m].summoner,PlayerSelectedByScore[m].scoreObjective]);//On met les joueurs avec le score le plus haut
-              if(PlayerArraySelected.length===result.objectivePlayer){//si le nombre de joueur max à été atteint on casse la boucle
-                break;
+          while (PlayerArraySelected.length < result.aggressivePlayer) {//Tant que le nombre joueur n'est pas éagle à celui qu'on recherche on continue la boucle
+
+            // @ts-ignore
+            let PlayerSelectedByScore = this.arrayAggressive.filter(elem => elem.score == highest);//On selectionne le ou les scores les plus hauts ....
+
+            if (PlayerSelectedByScore[0] != null) {//on check si il y a des joueurs qui ont le score "highest"
+              for (let m = 0; m < PlayerSelectedByScore.length; m++) {
+                PlayerArraySelected.push([PlayerSelectedByScore[m].summoner, PlayerSelectedByScore[m].score,PlayerSelectedByScore[m].data]);//On met les joueurs avec le score le plus haut
+                if (PlayerArraySelected.length === result.aggressivePlayer) {//si le nombre de joueur max à été atteint on casse la boucle
+                  break;
+                }
+                // ce sont eux qui match le plus selon le type sélectionné
               }
-              // ce sont eux qui match le plus selon le type sélectionné
+            }
+
+            highest = highest - 1;//on retire 1 à la recherche de score afin de descendre en score est trouvé le prochain joueur le plus "haut"
+
+          }
+          // @ts-ignore
+          this.resultAggressive=PlayerArraySelected;
+          this.show=true;
+          this.showAggressive=true;
+
+          console.log(this.resultAggressive);
+
+        } else {
+          this.toaster.error("You must set a player number !")
+        }
+      }
+      if (result.objective) {
+
+        if (result.objectivePlayer > 0) {
+
+          let highest = 0;
+
+          for (let y = 0; y < this.arrayObjective.length; y++) {
+            if (highest < this.arrayObjective[y].scoreObjective) {
+              highest = this.arrayObjective[y].scoreObjective;
             }
           }
 
-          highest=highest-1;//on retire 1 à la recherche de score afin de descendre en score est trouvé le prochain joueur le plus "haut"
-
-        }
-        console.log(PlayerArraySelected);
-      }else{
-        this.toaster.error("You must set a player number !")
-      }
-    }
-
-    if (result.safe){
-      if(result.safePlayer>0){
-        let highest=0;
-
-        for(let y=0;y<this.arrayPassive.length;y++){
-          if(highest<this.arrayPassive[y].scoreSafe){
-            highest=this.arrayPassive[y].scoreSafe;
-          }
-        }
-
-        // @ts-ignore
-        let PlayerArraySelected=[];
-
-        while (PlayerArraySelected.length<result.safePlayer) {//Tant que le nombre joueur n'est pas éagle à celui qu'on recherche on continue la boucle
-
           // @ts-ignore
-          let PlayerSelectedByScore=this.arrayPassive.filter(elem=>elem.scoreSafe==highest);//On selectionne le ou les scores les plus hauts ....
+          let PlayerArraySelected = [];
 
-          if(PlayerSelectedByScore[0]!=null) {//on check si il y a des joueurs qui ont le score "highest"
-            for (let m = 0; m < PlayerSelectedByScore.length; m++) {
-              PlayerArraySelected.push([PlayerSelectedByScore[m].summoner,PlayerSelectedByScore[m].scoreSafe]);//On met les joueurs avec le score le plus haut
-              if(PlayerArraySelected.length===result.safePlayer){//si le nombre de joueur max à été atteint on casse la boucle
-                break;
+          while (PlayerArraySelected.length < result.objectivePlayer) {//Tant que le nombre joueur n'est pas éagle à celui qu'on recherche on continue la boucle
+
+            // @ts-ignore
+            let PlayerSelectedByScore = this.arrayObjective.filter(elem => elem.scoreObjective == highest);//On selectionne le ou les scores les plus hauts ....
+
+            if (PlayerSelectedByScore[0] != null) {//on check si il y a des joueurs qui ont le score "highest"
+              for (let m = 0; m < PlayerSelectedByScore.length; m++) {
+                PlayerArraySelected.push([PlayerSelectedByScore[m].summoner, PlayerSelectedByScore[m].scoreObjective,PlayerSelectedByScore[m].data]);//On met les joueurs avec le score le plus haut
+                if (PlayerArraySelected.length === result.objectivePlayer) {//si le nombre de joueur max à été atteint on casse la boucle
+                  break;
+                }
+                // ce sont eux qui match le plus selon le type sélectionné
               }
-              // ce sont eux qui match le plus selon le type sélectionné
+            }
+
+            highest = highest - 1;//on retire 1 à la recherche de score afin de descendre en score est trouvé le prochain joueur le plus "haut"
+
+          }
+          // @ts-ignore
+          this.resultObjective=PlayerArraySelected;
+          this.showObjective=true;
+
+          console.log(this.resultObjective);
+        } else {
+          this.toaster.error("You must set a player number !")
+        }
+      }
+
+      if (result.safe) {
+        if (result.safePlayer > 0) {
+          let highest = 0;
+
+          for (let y = 0; y < this.arrayPassive.length; y++) {
+            if (highest < this.arrayPassive[y].scoreSafe) {
+              highest = this.arrayPassive[y].scoreSafe;
             }
           }
 
-          highest=highest-1;//on retire 1 à la recherche de score afin de descendre en score est trouvé le prochain joueur le plus "haut"
+          // @ts-ignore
+          let PlayerArraySelected = [];
 
+          while (PlayerArraySelected.length < result.safePlayer) {//Tant que le nombre joueur n'est pas éagle à celui qu'on recherche on continue la boucle
+
+            // @ts-ignore
+            let PlayerSelectedByScore = this.arrayPassive.filter(elem => elem.scoreSafe == highest);//On selectionne le ou les scores les plus hauts ....
+
+            if (PlayerSelectedByScore[0] != null) {//on check si il y a des joueurs qui ont le score "highest"
+              for (let m = 0; m < PlayerSelectedByScore.length; m++) {
+                PlayerArraySelected.push([PlayerSelectedByScore[m].summoner, PlayerSelectedByScore[m].scoreSafe,PlayerSelectedByScore[m].data]);//On met les joueurs avec le score le plus haut
+                if (PlayerArraySelected.length === result.safePlayer) {//si le nombre de joueur max à été atteint on casse la boucle
+                  break;
+                }
+                // ce sont eux qui match le plus selon le type sélectionné
+              }
+            }
+
+            highest = highest - 1;//on retire 1 à la recherche de score afin de descendre en score est trouvé le prochain joueur le plus "haut"
+
+          }
+          this.resultSafe=PlayerArraySelected;
+          this.showSafe=true;
+
+          console.log(this.resultSafe);
+
+        } else {
+          this.toaster.error("You must set a player number !")
         }
-        console.log(PlayerArraySelected);
-      }else{
-        this.toaster.error("You must set a player number !")
       }
+    }else{
+      this.show=true;
+      this.showAll=true;
     }
-
   }
 
 }

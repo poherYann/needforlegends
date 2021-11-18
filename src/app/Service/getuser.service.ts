@@ -20,11 +20,15 @@ export class GetuserService {
         'Authorization': 'Bearer '+token
       })
     };
-   console.log(token);
+
     this.http.post<any>(this.url,{email:email}, httpOption).subscribe(value => {
 
       if(value.request.code === 200){
+        if(value.detail!=null) {
           this.toaster.success(value.detail);
+        }else {
+          localStorage.setItem("user",value.user);
+        }
       }
       }, err=>{
 

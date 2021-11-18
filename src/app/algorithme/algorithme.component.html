@@ -20,6 +20,116 @@
       <p-triStateCheckbox formControlName="all" label="Show all"></p-triStateCheckbox>
     </div>
     <br>
-    <button pButton type="submit" class="p-button-raised">Serach !</button>
+    <button pButton type="submit" class="p-button-raised">Search !</button>
   </form>
+  <br>
+  <div class="result-algo" *ngIf="show">
+    <div class="show_all" *ngIf="showAll">
+      <div class="allstat" *ngFor="let player of allPlayer">
+        <div *ngIf="currentUser!=player.data['summoner']">
+        <h2>{{ player.data['summoner'] }} <img id="profilpic" src="http://ddragon.leagueoflegends.com/cdn/11.18.1/img/profileicon/{{ player.data['profilIcon'] }}.png"> </h2>
+        <p>Stat based on {{ player.data['totalGames'] }} games :</p>
+        <p>Most role played recently {{ player.data['role'] }} </p>
+        <ul>
+          <li>Average Baron/game: {{ player.data['baronKill'] }}</li>
+          <li>Average Damage dealt/game: {{ player.data['damage'] }}</li>
+          <li>Average Deaths/game: {{ player.data['deaths'] }}</li>
+          <li>Average Drake/game: {{ player.data['dragonKills'] }}</li>
+          <li>Average Gold Earned/game: {{ player.data['goldEarned'] }}</li>
+          <li>Average inhibitor/game: {{ player.data['inhibKills'] }}</li>
+          <li>Average Kills and assists/game: {{ player.data['ka'] }}</li>
+          <li>Average minion/game: {{ player.data['minion'] }}</li>
+          <li>Average Vision/game: {{ player.data['scoreVision'] }}</li>
+          <li>Average Damage Taken/game: {{ player.data['totalDamageTaken'] }}</li>
+          <li>Average Turret/game: {{ player.data['turretKills'] }}</li>
+          <li>Percentage first Kill: {{ player.data['firstKill'] }} %</li>
+          <li>Percentage first Tower Kill: {{ player.data['firstTowerKill'] }} %</li>
+        </ul>
+        <button pButton type="submit" class="p-button-raised">Asking for a group</button>
+        <hr>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="showAggressive">
+    <h2>Aggressive Player</h2>
+    <div class="aggressive"  *ngFor="let aggressive of resultAggressive">
+      <div *ngIf="currentUser!=aggressive[0]">
+        <h2>{{ aggressive[2]['summoner'] }} <img id="profilpic" src="http://ddragon.leagueoflegends.com/cdn/11.18.1/img/profileicon/{{ aggressive[2]['profilIcon'] }}.png"> </h2>
+        <p>Stat based on {{ aggressive[2]['totalGames'] }} games :</p>
+        <p>Most role played recently {{ aggressive[2]['role'] }} </p>
+        <ul>
+          <li>Average Baron/game: {{ aggressive[2]['baronKill'] }}</li>
+          <li>Average Damage dealt/game: {{ aggressive[2]['damage'] }}</li>
+          <li>Average Deaths/game: {{ aggressive[2]['deaths'] }}</li>
+          <li>Average Drake/game: {{ aggressive[2]['dragonKills'] }}</li>
+          <li>Average Gold Earned/game: {{ aggressive[2]['goldEarned'] }}</li>
+          <li>Average inhibitor/game: {{ aggressive[2]['inhibKills'] }}</li>
+          <li>Average Kills and assists/game: {{ aggressive[2]['ka'] }}</li>
+          <li>Average minion/game: {{ aggressive[2]['minion'] }}</li>
+          <li>Average Vision/game: {{ aggressive[2]['scoreVision'] }}</li>
+          <li>Average Damage Taken/game: {{ aggressive[2]['totalDamageTaken'] }}</li>
+          <li>Average Turret/game: {{ aggressive[2]['turretKills'] }}</li>
+          <li>Percentage first Kill: {{ aggressive[2]['firstKill'] }} %</li>
+          <li>Percentage first Tower Kill: {{ aggressive[2]['firstTowerKill'] }} %</li>
+        </ul>
+        <button pButton type="submit" class="p-button-raised">Asking for a group</button>
+        <hr>
+      </div>
+    </div>
+    </div>
+    <div *ngIf="showObjective">
+    <h2>Objective Player</h2>
+    <div class="objective" *ngFor="let objective of resultObjective">
+      <div *ngIf="currentUser!=objective[0]">
+        <h2>{{ objective[2]['summoner'] }} <img id="profilpic" src="http://ddragon.leagueoflegends.com/cdn/11.18.1/img/profileicon/{{ objective[2]['profilIcon'] }}.png"> </h2>
+        <p>Stat based on {{ objective[2]['totalGames'] }} games :</p>
+        <p>Most role played recently {{ objective[2]['role'] }} </p>
+        <ul>
+          <li>Average Baron/game: {{ objective[2]['baronKill'] }}</li>
+          <li>Average Damage dealt/game: {{ objective[2]['damage'] }}</li>
+          <li>Average Deaths/game: {{ objective[2]['deaths'] }}</li>
+          <li>Average Drake/game: {{ objective[2]['dragonKills'] }}</li>
+          <li>Average Gold Earned/game: {{ objective[2]['goldEarned'] }}</li>
+          <li>Average inhibitor/game: {{ objective[2]['inhibKills'] }}</li>
+          <li>Average Kills and assists/game: {{ objective[2]['ka'] }}</li>
+          <li>Average minion/game: {{ objective[2]['minion'] }}</li>
+          <li>Average Vision/game: {{ objective[2]['scoreVision'] }}</li>
+          <li>Average Damage Taken/game: {{ objective[2]['totalDamageTaken'] }}</li>
+          <li>Average Turret/game: {{ objective[2]['turretKills'] }}</li>
+          <li>Percentage first Kill: {{ objective[2]['firstKill'] }} %</li>
+          <li>Percentage first Tower Kill: {{ objective[2]['firstTowerKill'] }} %</li>
+        </ul>
+        <button pButton type="submit" class="p-button-raised">Asking for a group</button>
+        <hr>
+      </div>
+    </div>
+    </div>
+    <div *ngIf="showSafe">
+      <h2>Safe Player</h2>
+      <div class="safe" *ngFor="let safe of resultSafe">
+      <div *ngIf="currentUser!=safe[0]">
+        <h2>{{ safe[2]['summoner'] }} <img id="profilpic" src="http://ddragon.leagueoflegends.com/cdn/11.18.1/img/profileicon/{{ safe[2]['profilIcon'] }}.png"> </h2>
+        <p>Stat based on {{ safe[2]['totalGames'] }} games :</p>
+        <p>Most role played recently {{ safe[2]['role'] }} </p>
+        <ul>
+          <li>Average Baron/game: {{ safe[2]['baronKill'] }}</li>
+          <li>Average Damage dealt/game: {{ safe[2]['damage'] }}</li>
+          <li>Average Deaths/game: {{ safe[2]['deaths'] }}</li>
+          <li>Average Drake/game: {{ safe[2]['dragonKills'] }}</li>
+          <li>Average Gold Earned/game: {{ safe[2]['goldEarned'] }}</li>
+          <li>Average inhibitor/game: {{ safe[2]['inhibKills'] }}</li>
+          <li>Average Kills and assists/game: {{ safe[2]['ka'] }}</li>
+          <li>Average minion/game: {{ safe[2]['minion'] }}</li>
+          <li>Average Vision/game: {{ safe[2]['scoreVision'] }}</li>
+          <li>Average Damage Taken/game: {{ safe[2]['totalDamageTaken'] }}</li>
+          <li>Average Turret/game: {{ safe[2]['turretKills'] }}</li>
+          <li>Percentage first Kill: {{ safe[2]['firstKill'] }} %</li>
+          <li>Percentage first Tower Kill: {{ safe[2]['firstTowerKill'] }} %</li>
+        </ul>
+        <button pButton type="submit" class="p-button-raised">Asking for a group</button>
+        <hr>
+      </div>
+    </div>
+    </div>
+  </div>
 </div>

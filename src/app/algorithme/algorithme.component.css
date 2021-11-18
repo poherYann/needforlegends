@@ -7,3 +7,15 @@ label{
 .input input{
   margin-left: 25px;
 }
+ul li{
+  color: #fff;
+}
+.result-algo{
+  width: 95%;
+  padding: 25px;
+  border: 5px solid #D0A85C;
+}
+hr{
+  height: 3px ;
+  color: #D0A85C;
+}
