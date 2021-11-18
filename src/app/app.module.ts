@@ -44,6 +44,7 @@ const appRoutes: Routes = [
   { path: 'header', component: HeaderComponent },
   { path: 'footer', component: FooterComponent },
   { path: 'games', component: GamesComponent },
+  { path: '', component: SearchComponent },
   { path: 'home', component: SearchComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
