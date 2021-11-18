@@ -1,7 +1,3 @@
-div.container {
-  display: flex;
-  justify-content: center;
-}
 .dropdown-toggle::after {
   display:none;
 }
@@ -19,7 +15,7 @@ div.container {
   border-bottom: #7f847d solid 1px;
 }
 .region-img {
-  width: 15%;
+  width: 80%;
 }
 .dropdown-menu {
   background-color: #0B1425;
