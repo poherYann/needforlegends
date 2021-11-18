@@ -1,3 +1,7 @@
+div.container {
+  display: flex;
+  justify-content: center;
+}
 .dropdown-toggle::after {
   display:none;
 }
@@ -15,7 +19,7 @@
   border-bottom: #7f847d solid 1px;
 }
 .region-img {
-  width: 70%;
+  width: 15%;
 }
 .dropdown-menu {
   background-color: #0B1425;
