@@ -11,7 +11,7 @@
 
 h2{
   color: #d0a85c;
-  margin-bottom: 20px!important;
+  margin-bottom: 0!important;
 }
 body {
  background-color: #0B1425!important;
@@ -55,7 +55,7 @@ div.content {
   flex-direction: column;
   align-items: center;
   margin-bottom: 2.5rem;
-  padding-top: 4rem;
+  padding-top: 8rem;
 }
 /* You can add global styles to this file, and also import other style files */
 @import "../node_modules/primeng/resources/themes/saga-blue/theme.css";
