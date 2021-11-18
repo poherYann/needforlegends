@@ -8,33 +8,20 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class GetuserService {
 
-  url="http://127.0.0.1:8000/api/get_user";
+  url="http://127.0.0.1:8000/get_user";
 
 
   constructor(private http: HttpClient,private router:Router,private toaster:ToastrService) { }
 
-  getUser(email: string,token: string | null):void{
+  getUser(email: string): any{
+
+    localStorage.setItem("email",email);
 
    let httpOption={
       headers: new HttpHeaders({
-        'Authorization': 'Bearer '+token
       })
     };
 
-    this.http.post<any>(this.url,{email:email}, httpOption).subscribe(value => {
-
-      if(value.request.code === 200){
-
-        if(value.detail!=null) {
-          this.toaster.success(value.detail);
-        }else {
-          localStorage.setItem("user",value.user);
-        }
-      }
-      }, err=>{
-
-      this.toaster.error(err.error.detail);
-
-    });
+   return this.http.post<any>(this.url,{email:email}, httpOption);
   }
 }

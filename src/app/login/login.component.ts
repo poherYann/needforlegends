@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
     this.activatedRoute.queryParams.subscribe(params => {
       let str = params['register'];
       if(str != null){
-        this.toaster.success("Inscription réussis vous devez activer votre compte pour vous connecter !");
+        this.toaster.success("Sign up success you must activate your account ! (an email has been sended)");
       }
     });
 

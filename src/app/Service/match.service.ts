@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Router} from "@angular/router";
+import {ToastrService} from "ngx-toastr";
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ export class MatchService {
 
   url="http://127.0.0.1:8000";
 
-  constructor(private http: HttpClient,private router:Router) { }
+  constructor(private http: HttpClient,private router:Router,private toaster:ToastrService) { }
 
   getMatch(summoner_name:string | null, token:string | null){
 
@@ -24,14 +25,18 @@ export class MatchService {
   }
 
   setMatch(email:string, token:string | null){
+
     let httpOption={
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
         'Authorization': 'Bearer '+token
       })
     }
-    this.http.post(this.url+'/api/match',{email:email},httpOption).subscribe(value=>console.log(value));
-    this.router.navigate(['/search']);
+    this.http.post(this.url+'/api/match',{email:email},httpOption).subscribe(value=> {
+      console.log(value);
+      location.reload();
+
+    });
 
   }
 

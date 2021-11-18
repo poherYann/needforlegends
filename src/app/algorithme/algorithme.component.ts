@@ -64,7 +64,8 @@ export class AlgorithmeComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.user.getUser("",localStorage.getItem("token"));
+    // @ts-ignore
+    this.user.getUser(localStorage.getItem("email"));
 
     this.route.data.subscribe(value =>{
 

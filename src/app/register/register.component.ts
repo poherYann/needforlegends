@@ -57,7 +57,7 @@ export class RegisterComponent implements OnInit {
       this.registerservice.addUser(this.json);
 
     }else{
-      this.toaster.error("Les mot de passe ne sont pas identiques !");
+      this.toaster.error("Passwords must be the same ");
     }
 
   }
