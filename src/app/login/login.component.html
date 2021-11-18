@@ -1,5 +1,5 @@
 <div class="content">
-  <h2>Login</h2><br>
+  <h2 class="title">Sign In</h2><br>
   <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" id="formlogin">
     <span class="p-float-label">
       <input id="float-input-email" type="email" formControlName="email" pInputText>
@@ -9,7 +9,7 @@
       <input id="float-input-password" type="password" formControlName="password" pInputText>
       <label for="float-input-password">Password</label>
     </span>
-    <button pButton type="submit" class="p-button-raised">Connexion</button><br>
-    <p>New to Need4Legends ? <a href="/register">create an account</a> </p>
+    <button pButton type="submit" class="p-button-raised">Log In</button><br>
+    <p>Don't have an account ? <a href="/register">Sign Up</a> </p>
   </form>
 </div>
