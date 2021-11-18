@@ -19,3 +19,8 @@ hr{
   height: 3px ;
   color: #D0A85C;
 }
+
+.imp{
+  color: #D0A85C !important;
+  font-weight: bold;
+}
