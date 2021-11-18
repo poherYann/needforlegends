@@ -10,11 +10,12 @@
   font-size: 1.3em;
   margin: 8px 0 0 0;
 }
-.header-container {
+.border-container {
   background-color: #0B1425;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 1rem;
 }
 .region-img {
   width: 1.8rem;

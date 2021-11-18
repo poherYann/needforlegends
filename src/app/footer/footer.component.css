@@ -3,6 +3,9 @@
   color: #0B1425;
   font-weight: 700;
 }
+li {
+  width: 25%;
+}
 .nav-tabs {
   justify-content: space-around;
   background-color: #7f847d;
