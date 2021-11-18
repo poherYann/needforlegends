@@ -31,7 +31,7 @@ export class MatchService {
       })
     }
     this.http.post(this.url+'/api/match',{email:email},httpOption).subscribe(value=>console.log(value));
-    this.router.navigate(['/home']);
+    this.router.navigate(['/search']);
 
   }
 

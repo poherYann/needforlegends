@@ -12,7 +12,7 @@ export class LogoutService {
 
   logout(){
     localStorage.clear();
-    this.toaster.success("Vous avez bien été déconnecté !");
-    this.router.navigateByUrl("/home");
+    this.toaster.success("You have been disconnected !");
   }
+
 }

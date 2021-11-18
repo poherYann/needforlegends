@@ -11,6 +11,5 @@ export class AppComponent  {
 
    constructor(){
      this.token=localStorage.getItem('token');
-
   }
 }
