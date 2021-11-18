@@ -1,17 +1,17 @@
 export class Algo {
-  agressive: boolean;
+  aggressive: boolean;
   objective: boolean;
   safe: boolean;
-  agressivePlayer: number;
+  aggressivePlayer: number;
   objectivePlayer: number;
   safePlayer: number;
 
-  constructor(agressive?: boolean, objective?: boolean, safe?: boolean, agressivePlayer?: number, objectivePlayer?: number, safePlayer?: number) {
-    this.agressive = agressive === undefined ? false : agressive;
+  constructor(agressive?: boolean, objective?: boolean, safe?: boolean, aggressivePlayer?: number, objectivePlayer?: number, safePlayer?: number) {
+    this.aggressive = agressive === undefined ? false : agressive;
     this.objective = objective === undefined ? false : objective;
     this.safe = safe === undefined ? false : safe;
     this.safePlayer = safePlayer === undefined ? 0 : safePlayer;
-    this.agressivePlayer = agressivePlayer === undefined ? 0 : agressivePlayer;
+    this.aggressivePlayer = aggressivePlayer === undefined ? 0 : aggressivePlayer;
     this.objectivePlayer = objectivePlayer === undefined ? 0 : objectivePlayer;
 
   }

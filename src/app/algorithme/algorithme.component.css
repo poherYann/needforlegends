@@ -1,3 +1,9 @@
 .p-float-label label{
   width: max-content;
 }
+label{
+  color: #D0A85C;
+}
+.input input{
+  margin-left: 25px;
+}

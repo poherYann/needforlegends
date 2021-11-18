@@ -37,6 +37,8 @@ import {
   AuthGuardService as AuthGuard
 } from './Service/auth-guard.service';
 import {MatProgressBarModule} from "@angular/material/progress-bar";
+import {TriStateCheckboxModule} from "primeng/tristatecheckbox";
+import {InputNumberModule} from "primeng/inputnumber";
 
 const appRoutes: Routes = [
   { path: 'header', component: HeaderComponent },
@@ -93,6 +95,8 @@ const appRoutes: Routes = [
     NgbModule,
     AccordionModule,
     MatProgressBarModule,
+    TriStateCheckboxModule,
+    InputNumberModule,
 
   ],
   providers: [AuthGuard],

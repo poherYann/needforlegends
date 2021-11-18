@@ -13,12 +13,14 @@ import {ToastrService} from "ngx-toastr";
 export class AlgorithmeComponent implements OnInit {
 
   algoForm = this.fb.group({
-    agressive:["", [],],
+    aggressive:["", [],],
     objective:["", []],
     safe:["", []],
-    agressivePlayer:["", []],
-    objectivePlayer:["", []], // letter num et car spécial
-    safePlayer:["", []], // letter num et car spécial],
+    aggressivePlayer:["", [Validators.max(4)]],
+    objectivePlayer:["", [Validators.max(4)]], // letter num et car spécial
+    safePlayer:["", [Validators.max(4)]], // letter num et car spécial],
+    all:["", []], // letter num et car spécial],
+
   });
 
   private arrayMatchStat: any;
@@ -452,14 +454,14 @@ export class AlgorithmeComponent implements OnInit {
   onSubmit(){
 
     let result : Algo=this.algoForm.value;
-    let numberPlayer=result.agressivePlayer+result.objectivePlayer+result.safePlayer;
+    let numberPlayer=result.aggressivePlayer+result.objectivePlayer+result.safePlayer;
     if(numberPlayer>4){
       this.toaster.error("The player number can't be highest than 4 !")
       return;
     }
 
-    if (result.agressive){
-      if(result.agressivePlayer>0){
+    if (result.aggressive){
+      if(result.aggressivePlayer>0){
 
         let highest=0;
 
@@ -472,7 +474,7 @@ export class AlgorithmeComponent implements OnInit {
         // @ts-ignore
         let PlayerArraySelected=[];
 
-        while (PlayerArraySelected.length<result.agressivePlayer) {//Tant que le nombre joueur n'est pas éagle à celui qu'on recherche on continue la boucle
+        while (PlayerArraySelected.length<result.aggressivePlayer) {//Tant que le nombre joueur n'est pas éagle à celui qu'on recherche on continue la boucle
 
           // @ts-ignore
           let PlayerSelectedByScore=this.arrayAggressive.filter(elem=>elem.score==highest);//On selectionne le ou les scores les plus hauts ....
@@ -480,7 +482,7 @@ export class AlgorithmeComponent implements OnInit {
           if(PlayerSelectedByScore[0]!=null) {//on check si il y a des joueurs qui ont le score "highest"
             for (let m = 0; m < PlayerSelectedByScore.length; m++) {
               PlayerArraySelected.push([PlayerSelectedByScore[m].summoner,PlayerSelectedByScore[m].score]);//On met les joueurs avec le score le plus haut
-              if(PlayerArraySelected.length===result.agressivePlayer){//si le nombre de joueur max à été atteint on casse la boucle
+              if(PlayerArraySelected.length===result.aggressivePlayer){//si le nombre de joueur max à été atteint on casse la boucle
                 break;
               }
               // ce sont eux qui match le plus selon le type sélectionné

@@ -1,23 +1,25 @@
 <div class="content">
+  <h2>Search the better player !</h2><br>
   <form [formGroup]="algoForm" (ngSubmit)="onSubmit()">
-  <span class="p-float-label">
-    <label for="agressive"> Dominant Player</label>
-  <input type="checkbox" id="agressive" formControlName="agressive">
-  </span>
+    <div class="input">
+      <p-triStateCheckbox formControlName="aggressive" label="Dominant Player"></p-triStateCheckbox>
+      <input type="number" id="aggressivePlayer" formControlName="aggressivePlayer" min="0" max="4" placeholder="0">
+    </div>
     <br>
-    <input type="number" id="" formControlName="agressivePlayer" min="0" max="4">
-    <span class="p-float-label">
-    <input type="checkbox" id="objective" formControlName="objective">
-    <label for="objective">Objective player</label><br>
-  </span>
+    <div class="input">
+      <p-triStateCheckbox formControlName="objective" label="Objective Player"></p-triStateCheckbox>
+      <input type="number" id="objectivePlayer" formControlName="objectivePlayer" min="0" max="4" placeholder="0">
+    </div>
     <br>
-    <input type="number" id="objectivePlayer" formControlName="objectivePlayer" min="0" max="4">
-    <span class="p-float-label">
-    <input type="checkbox" id="safe" formControlName="safe">
-    <label for="objective">Safe Player</label><br>
-  </span>
+    <div class="input">
+      <p-triStateCheckbox formControlName="safe" label="Safe Player"></p-triStateCheckbox>
+      <input type="number" id="safePlayer" formControlName="safePlayer" min="0" max="4" placeholder="0">
+    </div>
     <br>
-    <input type="number" id="safePlayer" formControlName="safePlayer" min="0" max="4">
-    <button pButton type="submit" class="p-button-raised">Valider</button>
+    <div class="input">
+      <p-triStateCheckbox formControlName="all" label="Show all"></p-triStateCheckbox>
+    </div>
+    <br>
+    <button pButton type="submit" class="p-button-raised">Serach !</button>
   </form>
 </div>
