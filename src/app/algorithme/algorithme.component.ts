@@ -7,6 +7,7 @@ import {ToastrService} from "ngx-toastr";
 // @ts-ignore
 import {GetuserService} from "../Service/getuser.service";
 
+
 @Component({
   selector: 'app-algorithme',
   templateUrl: './algorithme.component.html',
