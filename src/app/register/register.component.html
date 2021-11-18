@@ -1,17 +1,17 @@
 <div class="content">
-
+<h2>Register</h2><br>
 <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
   <span class="p-float-label">
     <input id="float-input-name" type="text" formControlName="name" pInputText >
-    <label for="float-input-name">Prénom</label>
+    <label for="float-input-name">Surname</label>
   </span>
   <span class="p-float-label">
     <input id="float-input-surname" type="text" formControlName="surname" pInputText>
-    <label for="float-input-surname">Nom</label>
+    <label for="float-input-surname">Name</label>
   </span>
   <span class="p-float-label">
     <input id="float-input-summoner_name" type="text" formControlName="summoner_name" pInputText>
-    <label for="float-input-summoner_name" class="test">Nom d'invocateur</label>
+    <label for="float-input-summoner_name" class="test">Summoner name</label>
   </span>
   <span class="p-float-label">
     <input id="float-input-email" type="email" formControlName="email" pInputText>
@@ -19,13 +19,13 @@
   </span>
   <span class="p-float-label">
     <input id="float-input-password1" type="password" formControlName="password1" pInputText>
-    <label for="float-input-password1" class="test">Mot de passe</label>
+    <label for="float-input-password1" class="test">Password</label>
   </span>
   <span class="p-float-label">
     <input id="float-input-password2" type="password" formControlName="password2" pInputText>
-    <label for="float-input-password2">Confirmer mot de passe</label>
+    <label for="float-input-password2">Confirm Password</label>
   </span>
   <p-selectButton formControlName="platform" [options]="platforms" optionLabel="name" [multiple]="false"></p-selectButton>
-  <button pButton type="submit" class="p-button-raised">Valider</button>
+  <button pButton type="submit" class="p-button-raised">Send</button>
 </form>
 </div>

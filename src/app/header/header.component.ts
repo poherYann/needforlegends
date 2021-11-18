@@ -8,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 export class HeaderComponent implements OnInit {
 
   collapsed = true;
+  public token:any;
   constructor() { }
 
   ngOnInit(): void {
+
+     this.token=localStorage.getItem("token");
+
   }
 
 }

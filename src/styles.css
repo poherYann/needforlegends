@@ -7,7 +7,11 @@
 @import "~bootstrap-icons/font/bootstrap-icons.css";
 @import "app/match/match.component.css";
 @import "app/algorithme/algorithme.component.css";
+@import "app/login/login.component.css";
 
+h2{
+  color: #d0a85c;
+}
 body {
   background-color: #0B1425!important;
 }
@@ -44,3 +48,6 @@ div.content {
 @import "../node_modules/primeicons/primeicons.css";
 @import "app/match/match.component.css";
 
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

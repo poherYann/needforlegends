@@ -33,12 +33,16 @@ import {
 } from "./Service/resolver.service";
 import {timestampDifferenceComponent} from "./Pipe/timestampDifferenceComponent";
 import {timestampComponent} from "./Pipe/timestampComponent";
+import {
+  AuthGuardService as AuthGuard
+} from './Service/auth-guard.service';
+import {MatProgressBarModule} from "@angular/material/progress-bar";
 
 const appRoutes: Routes = [
   { path: 'header', component: HeaderComponent },
   { path: 'footer', component: FooterComponent },
   { path: 'games', component: GamesComponent },
-  { path: 'home', component: HomeComponent },
+  { path: 'home', component: SearchComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
   { path: 'activation/:token', component: ActivationComponent },
@@ -47,7 +51,8 @@ const appRoutes: Routes = [
     },
   },
   { path:'search',component: SearchComponent },
-  { path:'algo',component: AlgorithmeComponent,resolve:{
+  { path:'algo',component: AlgorithmeComponent, canActivate: [AuthGuard],
+    resolve:{
     data: GetMatchStatResolver,
     } },
   { path:'logout',component: LogoutComponent },
@@ -87,8 +92,10 @@ const appRoutes: Routes = [
     ToastrModule.forRoot(),
     NgbModule,
     AccordionModule,
+    MatProgressBarModule,
+
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
