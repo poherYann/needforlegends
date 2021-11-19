@@ -24,8 +24,8 @@ hr{
   color: #D0A85C !important;
   font-weight: bold;
 }
-li{
-  width: 100% !important;
+.result-algo li{
+  width: 100% ;
 }
 .result-algo p{
   color: white !important;

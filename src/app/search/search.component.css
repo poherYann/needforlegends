@@ -63,10 +63,10 @@ div#signup {
   margin-top: 20px;
   font-size: 1.3em;
   text-transform: uppercase;
-  color: white;
+  color: white !important;
 }
 .sign-in-text {
-  color: #7f847d;
+  color: #7f847d !important;
 }
 .sign-in {
   color: white;
@@ -95,7 +95,6 @@ div#signup {
   color: rgba(192,252,253,.7);
   font-weight: bolder;
 }
-
 
 @media screen and (min-width: 768px) {
   form {
