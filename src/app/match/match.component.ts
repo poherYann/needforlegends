@@ -30,7 +30,7 @@ export class MatchComponent implements OnInit {
         this.arrayMatches=value.data;
         this.arraySummoners=value.GetSummonerResolver;
 
-        console.log( this.arrayMatches['matchs']);
+        console.log( this.arrayChampions);
 
       },
       (error)=>{
@@ -60,6 +60,7 @@ export class MatchComponent implements OnInit {
           let participants=this.arrayMatches['matchs'][i]["participant"];
 
           for(let v=0;v<participants.length;v++) {
+
 
             let divTextLeft=document.createElement("div");
             divTextLeft.setAttribute("class","text");
@@ -94,10 +95,12 @@ export class MatchComponent implements OnInit {
               let divMatchRight = document.createElement("div");
               divMatchRight.setAttribute("class", "matchright");
               divMatch.appendChild(divMatchRight);
+              console.log( participants[v]['championId']);
 
               for (let u = 0; u < this.arrayChampions.length; u++) {
+                console.log(this.arrayChampions[u]['KeyChampion']);
 
-                if (this.arrayChampions[u]['KeyChampion'] === participants[v]['championId']) {
+                if (this.arrayChampions[u]['KeyChampion'] == participants[v]['championId']) {
                   let imgChampion = document.createElement("img");
                   imgChampion.setAttribute("src", "//opgg-static.akamaized.net/images/lol/champion/" + this.arrayChampions[u]['Image']['full'] + "?image=c_scale,q_auto,w_46&v=1635906101");
                   divMatchLeft.appendChild(imgChampion);
