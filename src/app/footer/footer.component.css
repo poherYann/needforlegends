@@ -3,8 +3,8 @@
   color: #0B1425;
   font-weight: 700;
 }
-li {
-  width: 25%;
+li.footerItem {
+  width: 25%!important;
 }
 .nav-tabs {
   justify-content: space-around;
