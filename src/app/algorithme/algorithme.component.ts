@@ -198,7 +198,7 @@ export class AlgorithmeComponent implements OnInit {
           }
           this.arrayAggressive = arrayResult;
           console.log(this.arrayAggressive);
-        } else if (TypeOfPlayer[m] === "safe") {
+        } else if (TypeOfPlayer[m] === "objective") {
 
           for (let i = 0; i < valueArray.length; i++) {
 
@@ -219,19 +219,19 @@ export class AlgorithmeComponent implements OnInit {
             for (let n = 0; n < arrayStatsType.length; n++) {//on boucle sur tout les baremes aggressive que l'on a choisis dans arrayStatsType
 
               switch (arrayStatsType[n]) {//chaque critère à son barème de score
-                case "damage":
+                case "baronKill":
                   scoreobj = this.ApplyScoreDependingValueType("baronKill", dataBaronKill, scoreobj);
                   break;
-                case "firstKill":
+                case "dragonKill":
                   scoreobj = this.ApplyScoreDependingValueType("dragonKill", dataDragonKills, scoreobj);
                   break;
                 case "firstTowerKill":
                   scoreobj = this.ApplyScoreDependingValueType("firstTowerKill", dataFirstTowerKill, scoreobj);
                   break;
-                case "goldEarned":
+                case "turretKill":
                   scoreobj = this.ApplyScoreDependingValueType("turretKill", dataTurretKills, scoreobj);
                   break;
-                case "ka":
+                case "inhibKill":
                   scoreobj = this.ApplyScoreDependingValueType("inhibKill", dataInhibKills, scoreobj);
                   break;
               }
@@ -243,7 +243,7 @@ export class AlgorithmeComponent implements OnInit {
           this.arrayObjective = arrayResult;
           console.log(this.arrayObjective);
 
-        } else if (TypeOfPlayer[m] === "objective") {
+        } else if (TypeOfPlayer[m] === "safe") {
           for (let i = 0; i < valueArray.length; i++) {
 
             let dataMinion = valueArray[i]['data']["minion"];
@@ -348,11 +348,11 @@ export class AlgorithmeComponent implements OnInit {
           score = score + 5;
         break;
       case "baronKill":
-        if(value == 0)
+        if(value >= 0 && value<=0.3)
           score = score + 0;
-        else if (value == 1)
+        else if (value >= 0.3 && value<=0.5)
           score = score + 2;
-        else if (value==2)
+        else if (value >= 0.5 && value<=0.8)
           score = score + 4;
         else
           score = score + 5;
@@ -483,11 +483,6 @@ export class AlgorithmeComponent implements OnInit {
     console.log(result.objectivePlayer);
     console.log(result.safePlayer);
 
-    numberPlayer=result.aggressivePlayer+result.objectivePlayer+result.safePlayer;
-    if(numberPlayer>4){
-      this.toaster.error("The player number can't be highest than 4 !")
-      return;
-    }
 
     if(!result.all) {
 
